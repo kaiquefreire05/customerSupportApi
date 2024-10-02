@@ -4,6 +4,7 @@ public enum ErrorCodeEnum {
 
     ON0001("ON0001", "Email is invalid"),
     ON0002("ON0002", "Phone is invalid"),
+    ON0003("ON0003", "Rating must be between 1 and 5"),
 
     ;
 

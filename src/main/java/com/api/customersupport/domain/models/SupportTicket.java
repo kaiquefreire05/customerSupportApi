@@ -21,8 +21,6 @@ public class SupportTicket {
     private Feedback feedback;
 
     // Constructors
-
-
     public SupportTicket(Long id, String title, String description, StatusEnum status, CategoryEnum category
             , LocalDateTime closedAt, LocalDateTime createdAt, LocalDateTime updatedAt, Client client
             , Agent assignedAgent, Feedback feedback) {
