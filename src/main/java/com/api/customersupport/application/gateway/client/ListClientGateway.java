@@ -1,10 +1,9 @@
-package com.api.customersupport.usecases.client;
+package com.api.customersupport.application.gateway.client;
 
 import com.api.customersupport.domain.models.Client;
 
 import java.util.List;
 
-public interface ListClients {
-
+public interface ListClientGateway {
     List<Client> listClients();
 }
