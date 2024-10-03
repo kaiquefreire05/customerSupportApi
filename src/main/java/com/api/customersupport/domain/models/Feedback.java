@@ -66,7 +66,7 @@ public class Feedback {
 
     public void setRating(Integer rating) throws RatingInvalidException {
         if (!isRatingValid()) {
-            throw new RatingInvalidException(ErrorCodeEnum.ON0003.getCode(), ErrorCodeEnum.ON0003.getMessage());
+            throw new RatingInvalidException(ErrorCodeEnum.FD0001.getCode(), ErrorCodeEnum.FD0001.getMessage());
         }
         this.rating = rating;
     }

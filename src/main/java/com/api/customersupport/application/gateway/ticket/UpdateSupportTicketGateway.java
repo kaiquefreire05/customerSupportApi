@@ -1,7 +1,7 @@
-package com.api.customersupport.usecases.ticket;
+package com.api.customersupport.application.gateway.ticket;
 
 import com.api.customersupport.domain.models.SupportTicket;
 
-public interface UpdateSupportTicketUseCase {
+public interface UpdateSupportTicketGateway {
     SupportTicket updateSupportTicket(SupportTicket supportTicket);
 }
