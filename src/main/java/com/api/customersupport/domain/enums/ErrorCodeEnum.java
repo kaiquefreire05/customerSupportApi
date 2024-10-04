@@ -9,6 +9,9 @@ public enum ErrorCodeEnum {
     ON0004("ON0004", "An internal problem occurred while deleting the customer"),
     ON0005("ON0005", "Customer not found"),
 
+    // Ticket Error Codes
+    TS0001("TS0005", "An error occurred while creating the support ticket"),
+
     // Feedbacks Error Codes
     FD0001("FD0001", "Rating must be between 1 and 5"),
 

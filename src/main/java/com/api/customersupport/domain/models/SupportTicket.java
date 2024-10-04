@@ -55,6 +55,13 @@ public class SupportTicket {
     public SupportTicket() {
     }
 
+    // Method
+    public void closeTicket() {
+        this.status = StatusEnum.CLOSED;
+        this.closedAt = LocalDateTime.now();
+    }
+
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -172,4 +179,5 @@ public class SupportTicket {
         result = 31 * result + Objects.hashCode(feedback);
         return result;
     }
+
 }

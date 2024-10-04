@@ -13,7 +13,8 @@ public class AssignAgentToTicketImpl implements AssignAgentToTicketUseCase {
     private final FindAgentByIdUseCase findAgentByIdUseCase;
     private final UpdateSupportTicketUseCase updateSupportTicketUseCase;
 
-    public AssignAgentToTicketImpl(FindTicketByIdUseCase findTicketByIdUseCase, FindAgentByIdUseCase findAgentByIdUseCase, UpdateSupportTicketUseCase updateSupportTicketUseCase) {
+    public AssignAgentToTicketImpl(FindTicketByIdUseCase findTicketByIdUseCase, FindAgentByIdUseCase findAgentByIdUseCase
+            , UpdateSupportTicketUseCase updateSupportTicketUseCase) {
         this.findTicketByIdUseCase = findTicketByIdUseCase;
         this.findAgentByIdUseCase = findAgentByIdUseCase;
         this.updateSupportTicketUseCase = updateSupportTicketUseCase;
