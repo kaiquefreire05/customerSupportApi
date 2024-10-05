@@ -1,0 +1,8 @@
+CREATE TABLE Feedbacks (
+    Id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Comments TEXT NOT NULL,
+    Rating INT NOT NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME,
+    SupportTicketId BIGINT
+);
