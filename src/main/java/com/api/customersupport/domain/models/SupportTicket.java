@@ -152,16 +152,19 @@ public class SupportTicket {
     }
 
     // HashCode and Equals
+
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SupportTicket that)) return false;
 
         return Objects.equals(id, that.id) && Objects.equals(title, that.title)
-                && Objects.equals(description, that.description) && status == that.status && category == that.category
-                && Objects.equals(closedAt, that.closedAt) && Objects.equals(createdAt, that.createdAt)
-                && Objects.equals(updatedAt, that.updatedAt) && Objects.equals(client, that.client)
-                && Objects.equals(assignedAgent, that.assignedAgent) && Objects.equals(feedback, that.feedback);
+                && Objects.equals(description, that.description) && status == that.status
+                && category == that.category && Objects.equals(closedAt, that.closedAt)
+                && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt)
+                && Objects.equals(client, that.client) && Objects.equals(assignedAgent, that.assignedAgent)
+                && Objects.equals(feedback, that.feedback);
     }
 
     @Override
@@ -179,5 +182,4 @@ public class SupportTicket {
         result = 31 * result + Objects.hashCode(feedback);
         return result;
     }
-
 }

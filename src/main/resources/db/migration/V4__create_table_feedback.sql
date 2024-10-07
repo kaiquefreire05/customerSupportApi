@@ -1,0 +1,10 @@
+CREATE TABLE Feedbacks (
+    Id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Comments TEXT NOT NULL,
+    Rating INT NOT NULL,
+    Created_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME,
+    SupportTicketId BIGINT,
+
+    FOREIGN KEY (SupportTicketId) REFERENCES SupportTickets(Id) ON DELETE CASCADE
+);

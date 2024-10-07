@@ -1,0 +1,15 @@
+CREATE TABLE SupportTickets (
+    Id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Description TEXT NOT NULL,
+    Status VARCHAR(20) NOT NULL,
+    Category VARCHAR(20) NOT NULL,
+    Closed_At DATETIME,
+    Created_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Updated_At DATETIME,
+    ClientId CHAR(36) NOT NULL,
+    AgentId CHAR(36),
+
+    FOREIGN KEY (ClientId) REFERENCES Clients(Id),
+    FOREIGN KEY (AgentId) REFERENCES Agents(Id)
+);
