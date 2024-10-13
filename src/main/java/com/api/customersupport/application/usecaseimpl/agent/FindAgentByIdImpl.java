@@ -1,6 +1,7 @@
 package com.api.customersupport.application.usecaseimpl.agent;
 
 import com.api.customersupport.application.gateway.agent.FindAgentByIdGateway;
+import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.usecases.agent.FindAgentByIdUseCase;
 
@@ -15,7 +16,7 @@ public class FindAgentByIdImpl implements FindAgentByIdUseCase {
     }
 
     @Override
-    public Agent findAgentById(UUID agentId) {
+    public Agent findAgentById(UUID agentId) throws AgentNotFoundException {
         return findAgentByIdGateway.findAgentById(agentId);
     }
 }

@@ -26,4 +26,15 @@ public class FeedbackMapper {
                 supportTicketMapper.toDomainModel(feedbackEntity.getSupportTicket())
         );
     }
+
+    public FeedbackEntity toEntity(Feedback feedback) {
+        return new FeedbackEntity(
+            feedback.getId(),
+            feedback.getComments(),
+            feedback.getRating(),
+            feedback.getCreatedAt(),
+            feedback.getUpdatedAt(),
+            supportTicketMapper.toEntity(feedback.getSupportTicket())
+        );
+    }
 }

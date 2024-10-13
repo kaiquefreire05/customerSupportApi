@@ -27,4 +27,17 @@ public class AgentMapper {
         );
     }
 
+    public AgentEntity toEntity(Agent agent) {
+        return new AgentEntity(
+                agent.getId(),
+                agent.getName(),
+                agent.getEmail(),
+                agent.getPhone(),
+                agent.getPassword(),
+                agent.getCreatedAt(),
+                agent.getUpdatedAt(),
+                supportTicketMapper.toEntityList(agent.getAssignedTickets())
+        );
+    }
+
 }

@@ -8,12 +8,17 @@ public enum ErrorCodeEnum {
     ON0003("ON0003", "An internal problem occurred while creating the customer"),
     ON0004("ON0004", "An internal problem occurred while deleting the customer"),
     ON0005("ON0005", "Customer not found"),
+    ON0006("ON0006", "Agent not found"),
 
     // Ticket Error Codes
     TS0001("TS0005", "An error occurred while creating the support ticket"),
+    TS0002("TS0002", "Ticket Support not found"),
 
     // Feedbacks Error Codes
     FD0001("FD0001", "Rating must be between 1 and 5"),
+
+    // Mapping Error Codes
+    MP0001("MP0001", "An error occurred while mapping the entity to the domain model")
 
     ;
 

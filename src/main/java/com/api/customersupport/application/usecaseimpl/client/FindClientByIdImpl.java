@@ -1,6 +1,7 @@
 package com.api.customersupport.application.usecaseimpl.client;
 
 import com.api.customersupport.application.gateway.client.FindClientByIdGateway;
+import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.usecases.client.FindClientByIdUseCase;
 
@@ -15,7 +16,7 @@ public class FindClientByIdImpl implements FindClientByIdUseCase {
     }
 
     @Override
-    public Client findClientById(UUID clientId) {
+    public Client findClientById(UUID clientId) throws ClientNotFoundException {
         return findClientByIdGateway.findClientById(clientId);
     }
 }

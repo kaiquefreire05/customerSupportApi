@@ -1,6 +1,7 @@
 package com.api.customersupport.application.usecaseimpl.ticket;
 
 import com.api.customersupport.application.gateway.ticket.FindTicketByIdGateway;
+import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.usecases.ticket.FindTicketByIdUseCase;
 
@@ -13,7 +14,7 @@ public class FindTicketByIdImpl implements FindTicketByIdUseCase {
     }
 
     @Override
-    public SupportTicket findTicketById(Long ticketId) {
+    public SupportTicket findTicketById(Long ticketId) throws TicketSupportNotFoundException {
         return findTicketByIdGateway.findTicketById(ticketId);
     }
 }
