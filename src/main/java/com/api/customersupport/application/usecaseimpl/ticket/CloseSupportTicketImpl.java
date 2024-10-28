@@ -1,5 +1,6 @@
 package com.api.customersupport.application.usecaseimpl.ticket;
 
+import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.usecases.ticket.CloseSupportTicketUseCase;
 import com.api.customersupport.usecases.ticket.FindTicketByIdUseCase;
 import com.api.customersupport.usecases.ticket.UpdateSupportTicketUseCase;
@@ -16,7 +17,7 @@ public class CloseSupportTicketImpl implements CloseSupportTicketUseCase {
     }
 
     @Override
-    public void closeSupportTicket(Long ticketId) {
+    public void closeSupportTicket(Long ticketId) throws TicketSupportNotFoundException {
         var ticketSupport = findTicketByIdUseCase.findTicketById(ticketId);
         ticketSupport.closeTicket();
         updateSupportTicketUseCase.updateSupportTicket(ticketSupport);

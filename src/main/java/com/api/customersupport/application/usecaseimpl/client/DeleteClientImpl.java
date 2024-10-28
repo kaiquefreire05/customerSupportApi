@@ -23,10 +23,11 @@ public class DeleteClientImpl implements DeleteClientUseCase {
     @Override
     public void deleteClient(UUID clientId) throws InternalServerErrorException {
         try {
+            /*
             // Verify if the client exists
             var client = findClientByIdUseCase.findClientById(clientId);
 
-            /*
+
             if (client == null) {
                 throw new ClientNotFoundException(ErrorCodeEnum.ON0005.getCode(), ErrorCodeEnum.ON0005.getMessage());
             }*/

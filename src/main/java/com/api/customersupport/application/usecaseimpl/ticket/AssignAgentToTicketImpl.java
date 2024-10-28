@@ -1,5 +1,7 @@
 package com.api.customersupport.application.usecaseimpl.ticket;
 
+import com.api.customersupport.domain.exceptions.AgentNotFoundException;
+import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.usecases.agent.FindAgentByIdUseCase;
 import com.api.customersupport.usecases.ticket.AssignAgentToTicketUseCase;
 import com.api.customersupport.usecases.ticket.FindTicketByIdUseCase;
@@ -21,7 +23,8 @@ public class AssignAgentToTicketImpl implements AssignAgentToTicketUseCase {
     }
 
     @Override
-    public void assignAgentToTicket(Long ticketId, UUID agentId) {
+    public void assignAgentToTicket(Long ticketId, UUID agentId) throws TicketSupportNotFoundException
+            , AgentNotFoundException {
         var supportTicket = findTicketByIdUseCase.findTicketById(ticketId);
         var agent = findAgentByIdUseCase.findAgentById(agentId);
         supportTicket.setAssignedAgent(agent);

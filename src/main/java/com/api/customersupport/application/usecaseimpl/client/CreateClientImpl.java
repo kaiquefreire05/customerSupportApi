@@ -16,10 +16,6 @@ public class CreateClientImpl implements CreateClientUseCase {
 
     @Override
     public void createClient(Client client) throws InternalServerErrorException {
-        /*
-        *
-        *
-        * */
         boolean success = createClientGateway.createClient(client);
         if (!success) {
             throw new InternalServerErrorException(ErrorCodeEnum.ON0003.getCode(), ErrorCodeEnum.ON0003.getMessage());

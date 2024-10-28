@@ -7,18 +7,21 @@ import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
-import lombok.SneakyThrows;
+import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Lazy;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class SupportTicketMapper {
     //Dependency Injection
     private final AgentMapper agentMapper;
     private final ClientMapper clientMapper;
     private final FeedbackMapper feedbackMapper;
 
-    public SupportTicketMapper(AgentMapper agentMapper, ClientMapper clientMapper, FeedbackMapper feedbackMapper) {
+    public SupportTicketMapper(AgentMapper agentMapper, @Lazy ClientMapper clientMapper, FeedbackMapper feedbackMapper) {
         this.agentMapper = agentMapper;
         this.clientMapper = clientMapper;
         this.feedbackMapper = feedbackMapper;

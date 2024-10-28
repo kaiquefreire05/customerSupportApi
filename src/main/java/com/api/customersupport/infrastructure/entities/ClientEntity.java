@@ -17,8 +17,8 @@ import java.util.UUID;
 public class ClientEntity {
 
     @Id
-    @Column(name = "Id", nullable = false, columnDefinition = "CHAR(36)")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id", nullable = false)
     private UUID id;
 
     @Column(name = "Name", nullable = false)
@@ -26,6 +26,9 @@ public class ClientEntity {
 
     @Column(name = "Email", nullable = false)
     private String email;
+
+    @Column(name = "Password", nullable = false)
+    private String password;
 
     @Column(name = "Phone", nullable = false)
     private String phone;
@@ -43,10 +46,11 @@ public class ClientEntity {
     private List<SupportTicketEntity> supportTickets;
 
     // Constructor
-    public ClientEntity(String name, String email, String phone, String address
+    public ClientEntity(String name, String email, String password, String phone, String address
             , LocalDateTime createdAt, LocalDateTime updatedAt, List<SupportTicketEntity> supportTickets) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.phone = phone;
         this.address = address;
         this.createdAt = createdAt;

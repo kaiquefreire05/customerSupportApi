@@ -9,6 +9,7 @@ public enum ErrorCodeEnum {
     ON0004("ON0004", "An internal problem occurred while deleting the customer"),
     ON0005("ON0005", "Customer not found"),
     ON0006("ON0006", "Agent not found"),
+    ON0007("ON0007", "This email is not available."),
 
     // Ticket Error Codes
     TS0001("TS0005", "An error occurred while creating the support ticket"),

@@ -7,9 +7,9 @@ CREATE TABLE SupportTickets (
     Closed_At DATETIME,
     Created_At DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Updated_At DATETIME,
-    ClientId CHAR(36) NOT NULL,
-    AgentId CHAR(36),
+    Client_Id BINARY(16) NOT NULL,
+    Agent_Id BINARY(16),
 
-    FOREIGN KEY (ClientId) REFERENCES Clients(Id),
-    FOREIGN KEY (AgentId) REFERENCES Agents(Id)
+    FOREIGN KEY (Client_Id) REFERENCES Clients(Id),
+    FOREIGN KEY (Agent_Id) REFERENCES Agents(Id)
 );

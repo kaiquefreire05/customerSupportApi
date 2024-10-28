@@ -5,12 +5,15 @@ import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FeedbackMapper {
     // Dependency Injection
     private final SupportTicketMapper supportTicketMapper;
 
-    public FeedbackMapper(SupportTicketMapper supportTicketMapper) {
+    public FeedbackMapper(@Lazy SupportTicketMapper supportTicketMapper) {
         this.supportTicketMapper = supportTicketMapper;
     }
 

@@ -18,6 +18,7 @@ public class Client {
     private UUID id;
     private String name;
     private String email;
+    private String password;
     private String phone;
     private String address;
     private LocalDateTime createdAt;
@@ -25,11 +26,12 @@ public class Client {
     private List<SupportTicket> supportTickets;
 
     // Constructors
-    public Client(UUID id, String name, String email, String phone, String address, LocalDateTime createdAt
+    public Client(UUID id, String name, String email, String password, String phone, String address, LocalDateTime createdAt
             , LocalDateTime updatedAt, List<SupportTicket> supportTickets) throws EmailInvalidException, PhoneInvalidException {
         this.id = id;
         this.name = name;
         setEmail(email);
+        this.password = password;
         setPhone(phone);
         this.address = address;
         this.createdAt = createdAt;
@@ -37,10 +39,11 @@ public class Client {
         this.supportTickets = supportTickets;
     }
 
-    public Client(String name, String email, String phone, String address, LocalDateTime createdAt
+    public Client(String name, String email, String password, String phone, String address, LocalDateTime createdAt
             , LocalDateTime updatedAt, List<SupportTicket> supportTickets) throws EmailInvalidException, PhoneInvalidException {
         this.name = name;
         setEmail(email);
+        this.password = password;
         setPhone(phone);
         this.address = address;
         this.createdAt = createdAt;
@@ -77,6 +80,14 @@ public class Client {
             throw new EmailInvalidException(ErrorCodeEnum.ON0001.getCode(), ErrorCodeEnum.ON0001.getMessage());
         }
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone() {
@@ -123,27 +134,26 @@ public class Client {
     }
 
     // HashCode and Equals
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Client client)) return false;
 
-        return Objects.equals(id, client.id) && Objects.equals(name, client.name) && Objects.equals(email, client.email)
-                && Objects.equals(phone, client.phone) && Objects.equals(address, client.address)
-                && Objects.equals(createdAt, client.createdAt) && Objects.equals(updatedAt, client.updatedAt)
-                && Objects.equals(supportTickets, client.supportTickets);
+        return id.equals(client.id) && name.equals(client.name) && email.equals(client.email) && password.equals(client.password) && phone.equals(client.phone) && address.equals(client.address) && createdAt.equals(client.createdAt) && Objects.equals(updatedAt, client.updatedAt) && supportTickets.equals(client.supportTickets);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(name);
-        result = 31 * result + Objects.hashCode(email);
-        result = 31 * result + Objects.hashCode(phone);
-        result = 31 * result + Objects.hashCode(address);
-        result = 31 * result + Objects.hashCode(createdAt);
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + phone.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + createdAt.hashCode();
         result = 31 * result + Objects.hashCode(updatedAt);
-        result = 31 * result + Objects.hashCode(supportTickets);
+        result = 31 * result + supportTickets.hashCode();
         return result;
     }
 }

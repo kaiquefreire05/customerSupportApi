@@ -45,7 +45,7 @@ public class SupportTicketEntity {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "Client_Id", nullable = false)
+    @JoinColumn(name = "Client_Id", referencedColumnName = "Id", nullable = false)
     private ClientEntity client;
 
     @ManyToOne
