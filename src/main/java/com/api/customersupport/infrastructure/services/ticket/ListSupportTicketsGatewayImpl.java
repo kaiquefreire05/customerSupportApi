@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.ticket;
 
 import com.api.customersupport.application.gateway.ticket.ListSupportTicketsGateway;
 import com.api.customersupport.domain.models.SupportTicket;

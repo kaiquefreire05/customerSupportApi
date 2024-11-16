@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.agent;
 
 import com.api.customersupport.application.gateway.agent.FindAgentByIdGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;

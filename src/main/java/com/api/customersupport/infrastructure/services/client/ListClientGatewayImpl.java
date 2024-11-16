@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.client;
 
 import com.api.customersupport.application.gateway.client.ListClientGateway;
 import com.api.customersupport.domain.models.Client;

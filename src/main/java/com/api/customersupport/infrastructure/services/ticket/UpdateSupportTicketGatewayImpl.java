@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.ticket;
 
 import com.api.customersupport.application.gateway.ticket.UpdateSupportTicketGateway;
 import com.api.customersupport.domain.models.SupportTicket;

@@ -7,6 +7,8 @@ public enum ErrorCodeEnum {
     ON0002("ON0002", "Phone is invalid"),
     ON0003("ON0003", "An internal problem occurred while creating the customer"),
     ON0004("ON0004", "An internal problem occurred while deleting the customer"),
+    ON0008("ON0008", "An internal problem occurred while deleting the agent"),
+    ON0009("ON0009", "An internal problem occurred while creating the agent"),
     ON0005("ON0005", "Customer not found"),
     ON0006("ON0006", "Agent not found"),
     ON0007("ON0007", "This email is not available."),

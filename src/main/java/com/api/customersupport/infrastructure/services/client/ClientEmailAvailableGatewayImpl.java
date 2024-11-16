@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.client;
 
 import com.api.customersupport.application.gateway.client.ClientEmailAvailableGateway;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
