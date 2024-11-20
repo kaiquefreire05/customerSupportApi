@@ -4,6 +4,7 @@ import com.api.customersupport.application.gateway.agent.DeleteAgentGateway;
 import com.api.customersupport.infrastructure.repositories.AgentEntityRepository;
 
 import java.util.UUID;
+
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 public class DeleteAgentGatewayImpl implements DeleteAgentGateway {

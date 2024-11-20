@@ -4,9 +4,10 @@ import com.api.customersupport.application.gateway.agent.DeleteAgentGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.InternalServerErrorException;
 import com.api.customersupport.usecases.agent.DeleteAgentUseCase;
-import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 import java.util.UUID;
+
+import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 public class DeleteAgentImpl implements DeleteAgentUseCase {
     // Dependency Injection

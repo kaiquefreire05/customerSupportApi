@@ -2,15 +2,14 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.infrastructure.dto.requests.CreateClientRequest;
-import com.api.customersupport.infrastructure.dto.requests.UpdateClientRequest;
+import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
+import com.api.customersupport.infrastructure.dto.requests.client.UpdateClientRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
 import com.api.customersupport.infrastructure.mapper.ClientMapper;
 import com.api.customersupport.usecases.client.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -53,11 +52,11 @@ public class ClientController {
         try {
             List<Client> clients = listClientsUseCase.listClients();
             return ResponseEntity.ok().body(BaseResponse.<List<Client>>builder().success(true)
-                .message("All clients successfully returned.").result(clients).build());
+                    .message("All clients successfully returned.").result(clients).build());
         } catch (Exception ex) {
             log.error("Error occurred while trying to get all clients. Error details: {}::ClientController", ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<List<Client>>builder().success(false)
-                .message("Error while trying to get all clients").build());
+                    .message("Error while trying to get all clients").build());
         }
     }
 
@@ -67,13 +66,13 @@ public class ClientController {
         try {
             log.info("Starting the getting of client by id::ClientController");
             Client client = findClientByIdUseCase.findClientById(uuid);
-                return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.<Client>builder().success(true)
-                        .result(client).message("Client with id " + uuid + " successfully returned.").build());
+            return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.<Client>builder().success(true)
+                    .result(client).message("Client with id " + uuid + " successfully returned.").build());
 
         } catch (ClientNotFoundException ex) {
             log.warn("Client with id {} not found::ClientController", uuid);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(BaseResponse.<Client>builder().success(false)
-                        .result(null).message("Client with id " + uuid + " not found.").build());
+                    .result(null).message("Client with id " + uuid + " not found.").build());
 
         } catch (Exception ex) {
             log.error("Error occurred while trying to get a client by its id. Error details: {}::ClientController", ex.getMessage());
@@ -94,13 +93,13 @@ public class ClientController {
         } catch (ClientNotFoundException ex) {
             log.warn("Client with email {} not found::ClientController", email);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(BaseResponse.<Client>builder().success(false)
-                        .message("Client with email " + email + " not found").build());
+                    .message("Client with email " + email + " not found").build());
 
         } catch (Exception ex) {
             log.error("Error occurred while trying to get a client by its email. Error details: {}::ClientController"
                     , ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<Client>builder().success(false)
-                .message("Error while trying to get a client by email").build());
+                    .message("Error while trying to get a client by email").build());
         }
     }
 
@@ -112,7 +111,7 @@ public class ClientController {
             return ResponseEntity.ok().body(BaseResponse.<Boolean>builder().success(true)
                     .result(true).message("A client with id " + uuid + " successfully removed.").build());
         } catch (Exception ex) {
-             log.error("Error occurred while trying to delete a client. Error details: {}::ClientController", ex.getMessage());
+            log.error("Error occurred while trying to delete a client. Error details: {}::ClientController", ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<Boolean>builder().success(false)
                     .result(false).message("Error while trying to delete a client").build());
         }

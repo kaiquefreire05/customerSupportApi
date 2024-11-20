@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.dto.requests;
+package com.api.customersupport.infrastructure.dto.requests.client;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

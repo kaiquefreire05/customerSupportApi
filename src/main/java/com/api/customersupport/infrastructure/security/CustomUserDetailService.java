@@ -30,19 +30,19 @@ public class CustomUserDetailService implements UserDetailsService {
             Client client = findClientByEmailUseCase.findClientByEmail(email);
             if (client != null) {
                 return User.builder()
-                    .username(client.getEmail())
-                    .password(client.getPassword())
-                    .roles("CLIENT")
-                    .build();
+                        .username(client.getEmail())
+                        .password(client.getPassword())
+                        .roles("CLIENT")
+                        .build();
             }
 
             Agent agent = findAgentByEmailGateway.findAgentByEmail(email);
             if (agent != null) {
                 return User.builder()
-                    .username(agent.getEmail())
-                    .password(agent.getPassword())
-                    .roles("AGENT")
-                    .build();
+                        .username(agent.getEmail())
+                        .password(agent.getPassword())
+                        .roles("AGENT")
+                        .build();
             }
 
             throw new UsernameNotFoundException("User not found");

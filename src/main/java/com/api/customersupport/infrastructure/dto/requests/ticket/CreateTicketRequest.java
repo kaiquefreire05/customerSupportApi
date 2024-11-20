@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.dto.requests;
+package com.api.customersupport.infrastructure.dto.requests.ticket;
 
 import com.api.customersupport.domain.enums.CategoryEnum;
 import jakarta.validation.constraints.NotBlank;

@@ -1,7 +1,6 @@
 package com.api.customersupport.application.usecaseimpl.ticket;
 
 import com.api.customersupport.application.gateway.ticket.UpdateSupportTicketGateway;
-import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.usecases.ticket.UpdateSupportTicketUseCase;
 

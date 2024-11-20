@@ -6,7 +6,6 @@ import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.usecases.agent.FindAgentByIdUseCase;
 import com.api.customersupport.usecases.ticket.AssignAgentToTicketUseCase;
 import com.api.customersupport.usecases.ticket.FindTicketByIdUseCase;
-import com.api.customersupport.usecases.ticket.UpdateSupportTicketUseCase;
 
 import java.util.UUID;
 

@@ -2,8 +2,8 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.infrastructure.dto.requests.CreateAgentRequest;
-import com.api.customersupport.infrastructure.dto.requests.UpdateAgentRequest;
+import com.api.customersupport.infrastructure.dto.requests.agent.CreateAgentRequest;
+import com.api.customersupport.infrastructure.dto.requests.agent.UpdateAgentRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
 import com.api.customersupport.infrastructure.mapper.AgentMapper;
 import com.api.customersupport.usecases.agent.*;

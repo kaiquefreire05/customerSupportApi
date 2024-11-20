@@ -5,7 +5,7 @@ import com.api.customersupport.domain.exceptions.EmailInvalidException;
 import com.api.customersupport.domain.exceptions.MappingException;
 import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.infrastructure.dto.requests.CreateClientRequest;
+import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
 import com.api.customersupport.infrastructure.entities.ClientEntity;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -28,14 +28,14 @@ public class ClientMapper {
     public Client toDomainModel(ClientEntity clientEntity) throws MatchException {
         try {
             return new Client(
-                clientEntity.getId(),
-                clientEntity.getName(),
-                clientEntity.getEmail(),
-                clientEntity.getPassword(),
-                clientEntity.getPhone(),
-                clientEntity.getAddress(),
-                clientEntity.getCreatedAt(),
-                clientEntity.getUpdatedAt()
+                    clientEntity.getId(),
+                    clientEntity.getName(),
+                    clientEntity.getEmail(),
+                    clientEntity.getPassword(),
+                    clientEntity.getPhone(),
+                    clientEntity.getAddress(),
+                    clientEntity.getCreatedAt(),
+                    clientEntity.getUpdatedAt()
             );
         } catch (EmailInvalidException | PhoneInvalidException ex) {
             throw new MappingException(ErrorCodeEnum.MP0001.getCode(),

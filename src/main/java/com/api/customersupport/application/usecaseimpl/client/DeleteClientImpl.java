@@ -2,13 +2,12 @@ package com.api.customersupport.application.usecaseimpl.client;
 
 import com.api.customersupport.application.gateway.client.DeleteClientGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
-import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.exceptions.InternalServerErrorException;
 import com.api.customersupport.usecases.client.DeleteClientUseCase;
-import com.api.customersupport.usecases.client.FindClientByIdUseCase;
-import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 import java.util.UUID;
+
+import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 public class DeleteClientImpl implements DeleteClientUseCase {
     // Dependency Injection

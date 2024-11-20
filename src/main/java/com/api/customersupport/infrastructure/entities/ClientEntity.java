@@ -1,6 +1,5 @@
 package com.api.customersupport.infrastructure.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

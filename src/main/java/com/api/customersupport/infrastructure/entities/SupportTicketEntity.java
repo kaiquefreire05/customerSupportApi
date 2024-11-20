@@ -2,7 +2,6 @@ package com.api.customersupport.infrastructure.entities;
 
 import com.api.customersupport.domain.enums.CategoryEnum;
 import com.api.customersupport.domain.enums.StatusEnum;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -61,7 +60,7 @@ public class SupportTicketEntity implements Serializable {
     // Constructor
     public SupportTicketEntity(String title, String description, StatusEnum status, CategoryEnum category
             , LocalDateTime closedAt, LocalDateTime createdAt, LocalDateTime updatedAt, ClientEntity client
-            ) {
+    ) {
         this.title = title;
         this.description = description;
         this.status = status;

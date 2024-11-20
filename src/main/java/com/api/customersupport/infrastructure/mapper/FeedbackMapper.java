@@ -1,7 +1,7 @@
 package com.api.customersupport.infrastructure.mapper;
 
-import com.api.customersupport.domain.exceptions.EmailInvalidException;
-import com.api.customersupport.domain.exceptions.PhoneInvalidException;
+import com.api.customersupport.domain.enums.ErrorCodeEnum;
+import com.api.customersupport.domain.exceptions.MappingException;
 import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
@@ -18,26 +18,30 @@ public class FeedbackMapper {
     }
 
     // Methods
-    public Feedback toDomainModel(FeedbackEntity feedbackEntity) throws RatingInvalidException, EmailInvalidException
-            , PhoneInvalidException {
-        return new Feedback(
-                feedbackEntity.getId(),
-                feedbackEntity.getComments(),
-                feedbackEntity.getRating(),
-                feedbackEntity.getCreatedAt(),
-                feedbackEntity.getUpdatedAt(),
-                supportTicketMapper.toDomainModel(feedbackEntity.getSupportTicket())
-        );
+    public Feedback toDomainModel(FeedbackEntity feedbackEntity) {
+        try {
+            return new Feedback(
+                    feedbackEntity.getId(),
+                    feedbackEntity.getComments(),
+                    feedbackEntity.getRating(),
+                    feedbackEntity.getCreatedAt(),
+                    feedbackEntity.getUpdatedAt(),
+                    supportTicketMapper.toDomainModel(feedbackEntity.getSupportTicket())
+            );
+        } catch (RatingInvalidException ex) {
+            throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
+                    ErrorCodeEnum.concatError(ex.getMessage(), ErrorCodeEnum.MP0001));
+        }
     }
 
     public FeedbackEntity toEntity(Feedback feedback) {
         return new FeedbackEntity(
-            feedback.getId(),
-            feedback.getComments(),
-            feedback.getRating(),
-            feedback.getCreatedAt(),
-            feedback.getUpdatedAt(),
-            supportTicketMapper.toEntity(feedback.getSupportTicket())
+                feedback.getId(),
+                feedback.getComments(),
+                feedback.getRating(),
+                feedback.getCreatedAt(),
+                feedback.getUpdatedAt(),
+                supportTicketMapper.toEntity(feedback.getSupportTicket())
         );
     }
 }

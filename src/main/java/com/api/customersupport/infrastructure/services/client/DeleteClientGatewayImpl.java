@@ -4,9 +4,9 @@ import com.api.customersupport.application.gateway.client.DeleteClientGateway;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
 import org.springframework.stereotype.Service;
 
-import static com.api.customersupport.infrastructure.utils.Utils.log;
-
 import java.util.UUID;
+
+import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @Service
 public class DeleteClientGatewayImpl implements DeleteClientGateway {

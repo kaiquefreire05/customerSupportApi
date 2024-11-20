@@ -1,15 +1,9 @@
 package com.api.customersupport.infrastructure.mapper;
 
-import com.api.customersupport.domain.enums.ErrorCodeEnum;
-import com.api.customersupport.domain.exceptions.EmailInvalidException;
-import com.api.customersupport.domain.exceptions.MappingException;
-import com.api.customersupport.domain.exceptions.PhoneInvalidException;
-import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.Lazy;
-
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,8 +23,7 @@ public class SupportTicketMapper {
 
     // Methods
     public SupportTicket toDomainModel(SupportTicketEntity supportTicketEntity) {
-        try {
-            return new SupportTicket(
+        return new SupportTicket(
                 supportTicketEntity.getId(),
                 supportTicketEntity.getTitle(),
                 supportTicketEntity.getDescription(),
@@ -42,42 +35,38 @@ public class SupportTicketMapper {
                 clientMapper.toDomainModel(supportTicketEntity.getClient()),
                 supportTicketEntity.getAssignedAgent() != null ? agentMapper.toDomainModel(supportTicketEntity.getAssignedAgent()) : null,
                 supportTicketEntity.getFeedback() != null ? feedbackMapper.toDomainModel(supportTicketEntity.getFeedback()) : null
-            );
-        } catch (EmailInvalidException | PhoneInvalidException | RatingInvalidException ex) {
-            throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
-                    ErrorCodeEnum.concatError(ex.getMessage(), ErrorCodeEnum.MP0001));
-        }
+        );
     }
 
     public SupportTicketEntity toEntity(SupportTicket supportTicket) {
         return new SupportTicketEntity(
-            supportTicket.getId(),
-            supportTicket.getTitle(),
-            supportTicket.getDescription(),
-            supportTicket.getStatus(),
-            supportTicket.getCategory(),
-            supportTicket.getClosedAt(),
-            supportTicket.getCreatedAt(),
-            supportTicket.getUpdatedAt(),
-            clientMapper.toEntity(supportTicket.getClient()),
-            agentMapper.toEntity(supportTicket.getAssignedAgent()),
-            feedbackMapper.toEntity(supportTicket.getFeedback())
+                supportTicket.getId(),
+                supportTicket.getTitle(),
+                supportTicket.getDescription(),
+                supportTicket.getStatus(),
+                supportTicket.getCategory(),
+                supportTicket.getClosedAt(),
+                supportTicket.getCreatedAt(),
+                supportTicket.getUpdatedAt(),
+                clientMapper.toEntity(supportTicket.getClient()),
+                agentMapper.toEntity(supportTicket.getAssignedAgent()),
+                feedbackMapper.toEntity(supportTicket.getFeedback())
         );
     }
 
     public SupportTicketEntity toEntityWithoutRelations(SupportTicket supportTicket) {
         return new SupportTicketEntity(
-            supportTicket.getId(),
-            supportTicket.getTitle(),
-            supportTicket.getDescription(),
-            supportTicket.getStatus(),
-            supportTicket.getCategory(),
-            supportTicket.getClosedAt(),
-            supportTicket.getCreatedAt(),
-            supportTicket.getUpdatedAt(),
-            clientMapper.toEntity(supportTicket.getClient()),
-            null,
-            null
+                supportTicket.getId(),
+                supportTicket.getTitle(),
+                supportTicket.getDescription(),
+                supportTicket.getStatus(),
+                supportTicket.getCategory(),
+                supportTicket.getClosedAt(),
+                supportTicket.getCreatedAt(),
+                supportTicket.getUpdatedAt(),
+                clientMapper.toEntity(supportTicket.getClient()),
+                null,
+                null
         );
     }
 
@@ -95,17 +84,17 @@ public class SupportTicketMapper {
 
     public SupportTicketEntity toEntityUpdate(SupportTicket supportTicket) {
         return new SupportTicketEntity(
-            supportTicket.getId(),
-            supportTicket.getTitle(),
-            supportTicket.getDescription(),
-            supportTicket.getStatus(),
-            supportTicket.getCategory(),
-            supportTicket.getClosedAt(),
-            supportTicket.getCreatedAt(),
-            supportTicket.getUpdatedAt(),
-            clientMapper.toEntity(supportTicket.getClient()),
-            supportTicket.getAssignedAgent() != null ? agentMapper.toEntity(supportTicket.getAssignedAgent()) : null,
-            supportTicket.getFeedback() != null ? feedbackMapper.toEntity(supportTicket.getFeedback()) : null
+                supportTicket.getId(),
+                supportTicket.getTitle(),
+                supportTicket.getDescription(),
+                supportTicket.getStatus(),
+                supportTicket.getCategory(),
+                supportTicket.getClosedAt(),
+                supportTicket.getCreatedAt(),
+                supportTicket.getUpdatedAt(),
+                clientMapper.toEntity(supportTicket.getClient()),
+                supportTicket.getAssignedAgent() != null ? agentMapper.toEntity(supportTicket.getAssignedAgent()) : null,
+                supportTicket.getFeedback() != null ? feedbackMapper.toEntity(supportTicket.getFeedback()) : null
         );
     }
 }

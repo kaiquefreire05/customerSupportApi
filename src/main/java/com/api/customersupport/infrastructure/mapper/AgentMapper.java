@@ -5,7 +5,7 @@ import com.api.customersupport.domain.exceptions.EmailInvalidException;
 import com.api.customersupport.domain.exceptions.MappingException;
 import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.infrastructure.dto.requests.CreateAgentRequest;
+import com.api.customersupport.infrastructure.dto.requests.agent.CreateAgentRequest;
 import com.api.customersupport.infrastructure.entities.AgentEntity;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -28,13 +28,13 @@ public class AgentMapper {
     public Agent toDomainModel(AgentEntity agentEntity) {
         try {
             return new Agent(
-                agentEntity.getId(),
-                agentEntity.getName(),
-                agentEntity.getEmail(),
-                agentEntity.getPhone(),
-                agentEntity.getPassword(),
-                agentEntity.getCreatedAt(),
-                agentEntity.getUpdatedAt()
+                    agentEntity.getId(),
+                    agentEntity.getName(),
+                    agentEntity.getEmail(),
+                    agentEntity.getPhone(),
+                    agentEntity.getPassword(),
+                    agentEntity.getCreatedAt(),
+                    agentEntity.getUpdatedAt()
             );
 
         } catch (EmailInvalidException | PhoneInvalidException ex) {

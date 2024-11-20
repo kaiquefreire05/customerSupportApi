@@ -2,7 +2,6 @@ package com.api.customersupport.infrastructure.config;
 
 import com.api.customersupport.application.gateway.client.*;
 import com.api.customersupport.application.usecaseimpl.client.*;
-import com.api.customersupport.infrastructure.mapper.ClientMapper;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
 import com.api.customersupport.infrastructure.services.client.ClientEmailAvailableGatewayImpl;
 import com.api.customersupport.usecases.client.*;
