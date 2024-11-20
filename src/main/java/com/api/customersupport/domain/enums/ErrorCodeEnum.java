@@ -14,16 +14,19 @@ public enum ErrorCodeEnum {
     ON0007("ON0007", "This email is not available."),
 
     // Ticket Error Codes
-    TS0001("TS0005", "An error occurred while creating the support ticket"),
+    TS0001("TS0001", "An error occurred while creating the support ticket"),
     TS0002("TS0002", "Ticket Support not found"),
+    TS0003("TS0003", "An internal problem occurred while deleting the customer"),
+    TS0004("TS0004", "An internal problem occurred while close the ticket"),
 
     // Feedbacks Error Codes
     FD0001("FD0001", "Rating must be between 1 and 5"),
+    FD0002("FD0002", "An internal problem occurred while deleting a feedback"),
+    FD0003("FD0003", "An error occurred while trying to assign a feedback to a ticket"),
+    FD0004("FD0004", "Feedback not found"),
 
     // Mapping Error Codes
-    MP0001("MP0001", "An error occurred while mapping the entity to the domain model")
-
-    ;
+    MP0001("MP0001", "An error occurred while mapping the entity to the domain model");
 
     // Attributes
     private String code;

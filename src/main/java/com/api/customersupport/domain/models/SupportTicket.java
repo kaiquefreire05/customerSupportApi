@@ -61,6 +61,9 @@ public class SupportTicket {
         this.closedAt = LocalDateTime.now();
     }
 
+    public boolean isClosed() {
+        return this.status == StatusEnum.CLOSED;
+    }
 
     // Getters and Setters
     public Long getId() {

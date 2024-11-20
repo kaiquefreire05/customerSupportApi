@@ -2,11 +2,13 @@ package com.api.customersupport.infrastructure.entities;
 
 import com.api.customersupport.domain.enums.CategoryEnum;
 import com.api.customersupport.domain.enums.StatusEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,7 +16,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "supporttickets")
-public class SupportTicketEntity {
+public class SupportTicketEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "Id", nullable = false)
@@ -44,11 +47,11 @@ public class SupportTicketEntity {
     @Column(name = "Updated_At")
     private LocalDateTime updatedAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Client_Id", referencedColumnName = "Id", nullable = false)
     private ClientEntity client;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Agent_Id")
     private AgentEntity assignedAgent;
 
@@ -58,7 +61,7 @@ public class SupportTicketEntity {
     // Constructor
     public SupportTicketEntity(String title, String description, StatusEnum status, CategoryEnum category
             , LocalDateTime closedAt, LocalDateTime createdAt, LocalDateTime updatedAt, ClientEntity client
-            , AgentEntity assignedAgent) {
+            ) {
         this.title = title;
         this.description = description;
         this.status = status;
@@ -67,6 +70,6 @@ public class SupportTicketEntity {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.client = client;
-        this.assignedAgent = assignedAgent;
+
     }
 }

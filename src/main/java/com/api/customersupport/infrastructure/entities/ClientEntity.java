@@ -1,10 +1,12 @@
 package com.api.customersupport.infrastructure.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +16,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "clients")
-public class ClientEntity {
+public class ClientEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,12 +45,13 @@ public class ClientEntity {
     @Column(name = "Updated_At", nullable = true)
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<SupportTicketEntity> supportTickets;
 
     // Constructor
-    public ClientEntity(String name, String email, String password, String phone, String address
-            , LocalDateTime createdAt, LocalDateTime updatedAt, List<SupportTicketEntity> supportTickets) {
+    public ClientEntity(UUID id, String name, String email, String password, String phone, String address
+            , LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -55,6 +59,5 @@ public class ClientEntity {
         this.address = address;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.supportTickets = supportTickets;
     }
 }

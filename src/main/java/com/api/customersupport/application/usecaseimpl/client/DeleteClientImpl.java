@@ -13,12 +13,9 @@ import java.util.UUID;
 public class DeleteClientImpl implements DeleteClientUseCase {
     // Dependency Injection
     private final DeleteClientGateway deleteClientGateway;
-    private final FindClientByIdUseCase findClientByIdUseCase;
 
-    public DeleteClientImpl(DeleteClientGateway deleteClientGateway
-            , FindClientByIdUseCase findClientByIdUseCase) {
+    public DeleteClientImpl(DeleteClientGateway deleteClientGateway) {
         this.deleteClientGateway = deleteClientGateway;
-        this.findClientByIdUseCase = findClientByIdUseCase;
     }
 
     @Override

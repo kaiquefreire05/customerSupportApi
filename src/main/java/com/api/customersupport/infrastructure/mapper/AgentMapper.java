@@ -34,8 +34,7 @@ public class AgentMapper {
                 agentEntity.getPhone(),
                 agentEntity.getPassword(),
                 agentEntity.getCreatedAt(),
-                agentEntity.getUpdatedAt(),
-                supportTicketMapper.toDomainModelList(agentEntity.getAssignedTickets())
+                agentEntity.getUpdatedAt()
             );
 
         } catch (EmailInvalidException | PhoneInvalidException ex) {
@@ -65,8 +64,7 @@ public class AgentMapper {
                 agent.getPhone(),
                 agent.getPassword(),
                 agent.getCreatedAt(),
-                agent.getUpdatedAt(),
-                supportTicketMapper.toEntityList(agent.getAssignedTickets())
+                agent.getUpdatedAt()
         );
     }
 
@@ -78,8 +76,7 @@ public class AgentMapper {
                 agent.getPhone(),
                 agent.getPassword(),
                 agent.getCreatedAt(),
-                agent.getUpdatedAt(),
-                supportTicketMapper.toEntityList(agent.getAssignedTickets())
+                agent.getUpdatedAt()
         );
     }
 

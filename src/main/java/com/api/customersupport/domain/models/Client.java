@@ -51,6 +51,18 @@ public class Client {
         this.supportTickets = supportTickets;
     }
 
+    public Client(UUID id, String name, String email, String password, String phone, String address
+            , LocalDateTime createdAt, LocalDateTime updatedAt) throws EmailInvalidException, PhoneInvalidException {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        this.password = password;
+        setPhone(phone);
+        this.address = address;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Client() {
     }
 
@@ -96,7 +108,7 @@ public class Client {
 
     public void setPhone(String phone) throws PhoneInvalidException {
         if (!isValidPhone(phone)) {
-            throw new PhoneInvalidException(ErrorCodeEnum.ON0002.getCode(), ErrorCodeEnum.ON0002.getMessage());
+            throw new PhoneInvalidException(ErrorCodeEnum.ON0002.getMessage(), ErrorCodeEnum.ON0002.getCode());
         }
         this.phone = phone;
     }

@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services;
+package com.api.customersupport.infrastructure.services.client;
 
 import com.api.customersupport.application.gateway.client.FindClientByIdGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
@@ -25,7 +25,7 @@ public class FindClientByIdGatewayImpl implements FindClientByIdGateway {
 
     @Override
     public Client findClientById(UUID clientId) throws ClientNotFoundException {
-        log.info("Finding agent by id: {}::FindClientByIdGatewayImpl", clientId);
+        log.info("Searching client by id: {}::FindClientByIdGatewayImpl", clientId);
         return clientRepository.findById(clientId)
                 .map(clientMapper::toDomainModel)
                 .orElseThrow(() -> new ClientNotFoundException(ErrorCodeEnum.ON0005.getCode()

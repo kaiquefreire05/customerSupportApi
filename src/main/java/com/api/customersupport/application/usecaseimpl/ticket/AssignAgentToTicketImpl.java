@@ -1,5 +1,6 @@
 package com.api.customersupport.application.usecaseimpl.ticket;
 
+import com.api.customersupport.application.gateway.ticket.AssignAgentToTicketGateway;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.usecases.agent.FindAgentByIdUseCase;
@@ -13,13 +14,13 @@ public class AssignAgentToTicketImpl implements AssignAgentToTicketUseCase {
     // Dependency Injection
     private final FindTicketByIdUseCase findTicketByIdUseCase;
     private final FindAgentByIdUseCase findAgentByIdUseCase;
-    private final UpdateSupportTicketUseCase updateSupportTicketUseCase;
+    private final AssignAgentToTicketGateway assignAgentToTicketGateway;
 
     public AssignAgentToTicketImpl(FindTicketByIdUseCase findTicketByIdUseCase, FindAgentByIdUseCase findAgentByIdUseCase
-            , UpdateSupportTicketUseCase updateSupportTicketUseCase) {
+            , AssignAgentToTicketGateway assignAgentToTicketGateway) {
         this.findTicketByIdUseCase = findTicketByIdUseCase;
         this.findAgentByIdUseCase = findAgentByIdUseCase;
-        this.updateSupportTicketUseCase = updateSupportTicketUseCase;
+        this.assignAgentToTicketGateway = assignAgentToTicketGateway;
     }
 
     @Override
@@ -27,7 +28,6 @@ public class AssignAgentToTicketImpl implements AssignAgentToTicketUseCase {
             , AgentNotFoundException {
         var supportTicket = findTicketByIdUseCase.findTicketById(ticketId);
         var agent = findAgentByIdUseCase.findAgentById(agentId);
-        supportTicket.setAssignedAgent(agent);
-        updateSupportTicketUseCase.updateSupportTicket(supportTicket);
+        assignAgentToTicketGateway.assignAgentToTicket(supportTicket, agent);
     }
 }

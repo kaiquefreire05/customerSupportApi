@@ -47,6 +47,17 @@ public class Agent {
         this.assignedTickets = assignedTickets;
     }
 
+    public Agent(UUID id, String name, String email, String phone, String password, LocalDateTime createdAt
+            , LocalDateTime updatedAt) throws EmailInvalidException, PhoneInvalidException {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPhone(phone);
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     public Agent() {
     }
 

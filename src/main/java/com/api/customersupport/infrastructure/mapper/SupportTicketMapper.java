@@ -40,8 +40,8 @@ public class SupportTicketMapper {
                 supportTicketEntity.getCreatedAt(),
                 supportTicketEntity.getUpdatedAt(),
                 clientMapper.toDomainModel(supportTicketEntity.getClient()),
-                agentMapper.toDomainModel(supportTicketEntity.getAssignedAgent()),
-                feedbackMapper.toDomainModel(supportTicketEntity.getFeedback())
+                supportTicketEntity.getAssignedAgent() != null ? agentMapper.toDomainModel(supportTicketEntity.getAssignedAgent()) : null,
+                supportTicketEntity.getFeedback() != null ? feedbackMapper.toDomainModel(supportTicketEntity.getFeedback()) : null
             );
         } catch (EmailInvalidException | PhoneInvalidException | RatingInvalidException ex) {
             throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
@@ -62,6 +62,22 @@ public class SupportTicketMapper {
             clientMapper.toEntity(supportTicket.getClient()),
             agentMapper.toEntity(supportTicket.getAssignedAgent()),
             feedbackMapper.toEntity(supportTicket.getFeedback())
+        );
+    }
+
+    public SupportTicketEntity toEntityWithoutRelations(SupportTicket supportTicket) {
+        return new SupportTicketEntity(
+            supportTicket.getId(),
+            supportTicket.getTitle(),
+            supportTicket.getDescription(),
+            supportTicket.getStatus(),
+            supportTicket.getCategory(),
+            supportTicket.getClosedAt(),
+            supportTicket.getCreatedAt(),
+            supportTicket.getUpdatedAt(),
+            clientMapper.toEntity(supportTicket.getClient()),
+            null,
+            null
         );
     }
 
@@ -88,8 +104,8 @@ public class SupportTicketMapper {
             supportTicket.getCreatedAt(),
             supportTicket.getUpdatedAt(),
             clientMapper.toEntity(supportTicket.getClient()),
-            agentMapper.toEntity(supportTicket.getAssignedAgent()),
-            feedbackMapper.toEntity(supportTicket.getFeedback())
+            supportTicket.getAssignedAgent() != null ? agentMapper.toEntity(supportTicket.getAssignedAgent()) : null,
+            supportTicket.getFeedback() != null ? feedbackMapper.toEntity(supportTicket.getFeedback()) : null
         );
     }
 }

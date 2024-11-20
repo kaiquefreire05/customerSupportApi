@@ -21,4 +21,29 @@ public class ClientConfig {
     public FindClientByEmailUseCase findClientByEmailUseCase(FindClientByEmailGateway findClientByEmailGateway) {
         return new FindClientByEmailImpl(findClientByEmailGateway);
     }
+
+    @Bean
+    public ClientEmailAvailableGateway clientEmailAvailableGateway(ClientEntityRepository clientEntityRepository) {
+        return new ClientEmailAvailableGatewayImpl(clientEntityRepository);
+    }
+
+    @Bean
+    public FindClientByIdUseCase findClientByIdUseCase(FindClientByIdGateway findClientByIdGateway) {
+        return new FindClientByIdImpl(findClientByIdGateway);
+    }
+
+    @Bean
+    public ListClientsUseCase listClientsUseCase(ListClientGateway listClientGateway) {
+        return new ListClientsImpl(listClientGateway);
+    }
+
+    @Bean
+    public UpdateClientUseCase updateClientUseCase(UpdateClientGateway updateClientGateway) {
+        return new UpdateClientImpl(updateClientGateway);
+    }
+
+    @Bean
+    public DeleteClientUseCase deleteClientUseCase(DeleteClientGateway deleteClientGateway) {
+        return new DeleteClientImpl(deleteClientGateway);
+    }
 }

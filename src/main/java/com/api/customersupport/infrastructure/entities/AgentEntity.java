@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +15,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "agents")
-public class AgentEntity {
+public class AgentEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Column(name = "Id", nullable = false, columnDefinition = "CHAR(36)")
+    @Column(name = "Id", nullable = false, columnDefinition = "UUID")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -52,5 +54,16 @@ public class AgentEntity {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.assignedTickets = assignedTickets;
+    }
+
+    public AgentEntity(UUID id, String name, String email, String phone, String password, LocalDateTime createdAt
+            , LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }

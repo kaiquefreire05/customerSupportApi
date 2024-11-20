@@ -1,2 +1,5 @@
-alter table feedbacks
-    change SupportTicketId Support_Ticket_Id bigint null;
+ALTER TABLE feedbacks
+    RENAME COLUMN SupportTicketId TO Support_Ticket_Id;
+
+ALTER TABLE feedbacks
+    ALTER COLUMN Support_Ticket_Id TYPE BIGINT;

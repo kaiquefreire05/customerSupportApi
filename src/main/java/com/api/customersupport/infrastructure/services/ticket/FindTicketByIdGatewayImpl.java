@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.services.ticket;
+package copppom.api.customersupport.infrastructure.services.ticket;
 
 import com.api.customersupport.application.gateway.ticket.FindTicketByIdGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;

@@ -35,8 +35,7 @@ public class ClientMapper {
                 clientEntity.getPhone(),
                 clientEntity.getAddress(),
                 clientEntity.getCreatedAt(),
-                clientEntity.getUpdatedAt(),
-                supportTicketMapper.toDomainModelList(clientEntity.getSupportTickets())
+                clientEntity.getUpdatedAt()
             );
         } catch (EmailInvalidException | PhoneInvalidException ex) {
             throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
@@ -67,8 +66,7 @@ public class ClientMapper {
                 client.getPhone(),
                 client.getAddress(),
                 client.getCreatedAt(),
-                client.getUpdatedAt(),
-                supportTicketMapper.toEntityList(client.getSupportTickets())
+                client.getUpdatedAt()
         );
     }
 
@@ -81,8 +79,7 @@ public class ClientMapper {
                 client.getPhone(),
                 client.getAddress(),
                 client.getCreatedAt(),
-                client.getUpdatedAt(),
-                supportTicketMapper.toEntityList(client.getSupportTickets())
+                client.getUpdatedAt()
         );
     }
 

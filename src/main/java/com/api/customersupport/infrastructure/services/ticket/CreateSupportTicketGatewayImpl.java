@@ -23,7 +23,7 @@ public class CreateSupportTicketGatewayImpl implements CreateSupportTicketGatewa
     public Boolean createSupportTicket(SupportTicket supportTicket) {
         try {
             log.info("Starting of support ticket creation::CreateSupportTicketGatewayImpl");
-            var ticketSaved = supportTicketRepository.save(supportTicketMapper.toEntity(supportTicket));
+            var ticketSaved = supportTicketRepository.save(supportTicketMapper.toEntityWithoutRelations(supportTicket));
             log.info("End of support ticket creation::CreateSupportTicketGatewayImpl");
             return true;
         } catch (Exception e) {
