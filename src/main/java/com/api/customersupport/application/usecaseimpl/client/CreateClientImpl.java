@@ -15,10 +15,11 @@ public class CreateClientImpl implements CreateClientUseCase {
     }
 
     @Override
-    public void createClient(Client client) throws InternalServerErrorException {
-        boolean success = createClientGateway.createClient(client);
-        if (!success) {
+    public Client createClient(Client client) throws InternalServerErrorException {
+        Client createdClient = createClientGateway.createClient(client);
+        if (createdClient == null) {
             throw new InternalServerErrorException(ErrorCodeEnum.ON0003.getCode(), ErrorCodeEnum.ON0003.getMessage());
         }
+        return createdClient;
     }
 }

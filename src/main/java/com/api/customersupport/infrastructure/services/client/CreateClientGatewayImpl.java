@@ -24,7 +24,7 @@ public class CreateClientGatewayImpl implements CreateClientGateway {
     }
 
     @Override
-    public Boolean createClient(Client client) {
+    public Client createClient(Client client) {
         try {
             log.info("Starting of client creation::CreateClientGatewayImpl");
 
@@ -33,11 +33,11 @@ public class CreateClientGatewayImpl implements CreateClientGateway {
 
             var userSaved = clientRepository.save(clientMapper.toEntity(client));
             log.info("End of client creation::CreateClientGatewayImpl");
-            return true;
+            return clientMapper.toDomainModel(userSaved);
 
         } catch (Exception ex) {
             log.error("Error in client creation. Error details: {}::CreateClientGatewayImpl", ex.getMessage());
-            return false;
+            return null;
         }
     }
 }

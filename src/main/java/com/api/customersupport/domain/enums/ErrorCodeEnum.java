@@ -26,7 +26,10 @@ public enum ErrorCodeEnum {
     FD0004("FD0004", "Feedback not found"),
 
     // Mapping Error Codes
-    MP0001("MP0001", "An error occurred while mapping the entity to the domain model");
+    MP0001("MP0001", "An error occurred while mapping the entity to the domain model"),
+
+    // JWT Errors
+    JW0001("JW0001", "Error while authenticating");
 
     // Attributes
     private String code;
