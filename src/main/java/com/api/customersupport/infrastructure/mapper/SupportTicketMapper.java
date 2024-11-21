@@ -97,4 +97,5 @@ public class SupportTicketMapper {
                 supportTicket.getFeedback() != null ? feedbackMapper.toEntity(supportTicket.getFeedback()) : null
         );
     }
+
 }

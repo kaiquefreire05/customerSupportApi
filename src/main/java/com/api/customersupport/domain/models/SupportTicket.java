@@ -52,6 +52,10 @@ public class SupportTicket {
         this.feedback = feedback;
     }
 
+    public SupportTicket(Long id) {
+        this.id = id;
+    }
+
     public SupportTicket() {
     }
 

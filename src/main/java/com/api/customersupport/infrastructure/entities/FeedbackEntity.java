@@ -37,4 +37,13 @@ public class FeedbackEntity implements Serializable {
     @JoinColumn(name = "Support_Ticket_Id", nullable = false)
     private SupportTicketEntity supportTicket;
 
+    // Constructor
+    public FeedbackEntity(String comments, Integer rating, LocalDateTime createdAt, LocalDateTime updatedAt
+            , SupportTicketEntity supportTicket) {
+        this.comments = comments;
+        this.rating = rating;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.supportTicket = supportTicket;
+    }
 }

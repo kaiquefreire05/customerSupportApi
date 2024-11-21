@@ -71,4 +71,8 @@ public class SupportTicketEntity implements Serializable {
         this.client = client;
 
     }
+
+    public SupportTicketEntity(Long id) {
+        this.id = id;
+    }
 }

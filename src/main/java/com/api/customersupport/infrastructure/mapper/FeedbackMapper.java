@@ -4,7 +4,9 @@ import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.MappingException;
 import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.Feedback;
+import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
+import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +28,7 @@ public class FeedbackMapper {
                     feedbackEntity.getRating(),
                     feedbackEntity.getCreatedAt(),
                     feedbackEntity.getUpdatedAt(),
-                    supportTicketMapper.toDomainModel(feedbackEntity.getSupportTicket())
+                    new SupportTicket(feedbackEntity.getSupportTicket().getId())
             );
         } catch (RatingInvalidException ex) {
             throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
@@ -35,13 +37,25 @@ public class FeedbackMapper {
     }
 
     public FeedbackEntity toEntity(Feedback feedback) {
+    return new FeedbackEntity(
+        feedback.getId(),
+        feedback.getComments(),
+        feedback.getRating(),
+        feedback.getCreatedAt(),
+        feedback.getUpdatedAt(),
+        new SupportTicketEntity(feedback.getSupportTicket().getId())
+    );
+}
+
+    public FeedbackEntity toEntityUpdate(Feedback feedback) {
         return new FeedbackEntity(
                 feedback.getId(),
                 feedback.getComments(),
                 feedback.getRating(),
                 feedback.getCreatedAt(),
                 feedback.getUpdatedAt(),
-                supportTicketMapper.toEntity(feedback.getSupportTicket())
+                new SupportTicketEntity(feedback.getSupportTicket().getId())
         );
     }
+
 }

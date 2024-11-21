@@ -20,7 +20,7 @@ public class DeleteSupportTicketGatewayImpl implements DeleteSupportTicketGatewa
             supportTicketRepository.deleteById(ticketId);
             log.info("Support ticket with id: {} deleted successfully", ticketId);
             return true;
-        }catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             log.error("Invalid support ticket ID: {}. Error details: {}", ticketId, ex.getMessage());
             return false;
 

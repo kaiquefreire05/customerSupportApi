@@ -39,8 +39,8 @@ public class Feedback {
     }
 
     // Methods
-    public Boolean isRatingValid() {
-        return rating >= 1 && rating <= 5;
+    public Boolean isRatingValid(Integer rating) {
+        return rating != null && rating >= 1 && rating <= 5;
     }
 
     // Getters and Setters
@@ -65,7 +65,7 @@ public class Feedback {
     }
 
     public void setRating(Integer rating) throws RatingInvalidException {
-        if (!isRatingValid()) {
+        if (!isRatingValid(rating)) {
             throw new RatingInvalidException(ErrorCodeEnum.FD0001.getCode(), ErrorCodeEnum.FD0001.getMessage());
         }
         this.rating = rating;
@@ -96,12 +96,14 @@ public class Feedback {
     }
 
     // HashCode and Equals
+
     @Override
     public final boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof Feedback feedback)) return false;
 
-        return Objects.equals(id, feedback.id) && Objects.equals(comments, feedback.comments) && Objects.equals(rating, feedback.rating) && Objects.equals(createdAt, feedback.createdAt) && Objects.equals(updatedAt, feedback.updatedAt) && Objects.equals(supportTicket, feedback.supportTicket);
+        return Objects.equals(id, feedback.id) && Objects.equals(comments, feedback.comments) && Objects.equals(rating
+                , feedback.rating) && Objects.equals(createdAt, feedback.createdAt) && Objects.equals(updatedAt
+                , feedback.updatedAt) && Objects.equals(supportTicket, feedback.supportTicket);
     }
 
     @Override

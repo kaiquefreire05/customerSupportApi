@@ -33,7 +33,7 @@ public class ProvideFeedbackImpl implements ProvideFeedbackUseCase {
             }
 
         } catch (Exception ex) {
-            log.info("Error providing feedback with ID: {}. Error details: {}", ticketId, ex.getMessage());
+            log.info("Error providing feedback with ID: {}. Error details: {}::ProvideFeedbackImpl", ticketId, ex.getMessage());
             throw new FeedbackNotCreatedException(ErrorCodeEnum.FD0003.getCode(),
                     ErrorCodeEnum.concatError(ex.getMessage(), ErrorCodeEnum.FD0003));
         }
