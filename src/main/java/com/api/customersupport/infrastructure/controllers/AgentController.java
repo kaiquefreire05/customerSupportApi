@@ -10,6 +10,7 @@ import com.api.customersupport.usecases.agent.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -47,6 +48,7 @@ public class AgentController {
 
     // Controllers methods
     @GetMapping("/all")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<List<Agent>>> getAll() {
         log.info("Request received to get all entities agent::AgentController");
         try {
@@ -62,6 +64,7 @@ public class AgentController {
     }
 
     @GetMapping("/uuid/{uuid}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Agent>> getById(@PathVariable UUID uuid) {
         log.info("Request received to get a entity by UUID:AgentController");
         try {
@@ -82,6 +85,7 @@ public class AgentController {
     }
 
     @GetMapping("/email/{email}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Agent>> getByEmail(@PathVariable String email) {
         log.info("Request received to get a entity by email:AgentController");
         try {
@@ -101,6 +105,7 @@ public class AgentController {
     }
 
     @DeleteMapping("/{uuid}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Boolean>> deleteAgent(@PathVariable UUID uuid) {
         log.info("Request received to delete a entity by UUID:AgentController");
         try {
@@ -116,6 +121,7 @@ public class AgentController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<String>> createAgent(@Valid @RequestBody CreateAgentRequest request) {
         log.info("Request received to create a entity agent::AgentController");
         try {
@@ -135,6 +141,7 @@ public class AgentController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<String>> updateAgent(@Valid @RequestBody UpdateAgentRequest request) {
         log.info("Request received to update agent:AgentController");
         try {

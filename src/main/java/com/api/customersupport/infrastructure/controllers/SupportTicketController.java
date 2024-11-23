@@ -51,6 +51,7 @@ public class SupportTicketController {
 
     // Controller Methods
     @GetMapping("/all")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<List<SupportTicket>>> getAll() {
         log.info("Request received to get all entities support ticket::SupportTicketController");
         try {
@@ -66,6 +67,7 @@ public class SupportTicketController {
     }
 
     @GetMapping("id/{id}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<SupportTicket>> getById(@PathVariable Long id) {
         log.info("Request received to get a entity by id:AgentController");
         try {
@@ -86,6 +88,7 @@ public class SupportTicketController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Boolean>> delete(@PathVariable Long id) {
         log.info("Request received to delete a support ticket::SupportTicketController");
         try {
@@ -99,7 +102,7 @@ public class SupportTicketController {
         }
     }
 
-    @PreAuthorize("hasRole('AGENT')")
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public ResponseEntity<BaseResponse<String>> createSupportTicket(@Valid @RequestBody CreateTicketRequest request) {
         log.info("Request received to create support ticket::SupportTicketController");
@@ -129,7 +132,7 @@ public class SupportTicketController {
         }
     }
 
-    @PreAuthorize("hasRole('AGENT')")
+    @PreAuthorize("isAuthenticated()")
     @PutMapping("/update")
     public ResponseEntity<BaseResponse<String>> updateSupportTicket(@Valid @RequestBody UpdateTicketRequest request) {
         log.info("Request received to update a support ticket::SupportTicketController");
@@ -155,6 +158,7 @@ public class SupportTicketController {
     }
 
     @PutMapping("/assign-agent")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<String>> assignAgentToTicket(@RequestParam Long ticketId, @RequestParam UUID agentId) {
         log.info("Request received to assign agent to a support ticket::SupportTicketController");
         try {
@@ -171,6 +175,7 @@ public class SupportTicketController {
     }
 
     @PutMapping("/close_ticket/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<String>> closeSupportTicket(@PathVariable Long id) {
         log.info("Request received to close a support ticket::SupportTicketController");
         try {

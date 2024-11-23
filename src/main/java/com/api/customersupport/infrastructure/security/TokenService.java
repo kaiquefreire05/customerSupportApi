@@ -15,9 +15,11 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+import static com.api.customersupport.infrastructure.utils.Utils.log;
+
 @Service
 public class TokenService {
-    @Value("${TOKEN_API}")
+    @Value("${secret-key}")
     private String secret;
 
     public String generateToken(Object user) throws JwtCreateException {
@@ -33,7 +35,7 @@ public class TokenService {
             }
 
             Algorithm algorithm = Algorithm.HMAC256(secret);
-
+            log.info("Generating token for user: {}", email);
             return JWT.create()
                     .withIssuer("login-auth-api")
                     .withSubject(email)
@@ -55,6 +57,7 @@ public class TokenService {
                     .verify(token)
                     .getSubject();
         } catch (JWTVerificationException exception) {
+            log.error("Invalid token: {}", exception.getMessage());
             return null;
         }
     }

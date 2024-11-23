@@ -9,6 +9,7 @@ import com.api.customersupport.usecases.feedback.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -37,6 +38,7 @@ public class FeedbackController {
 
     // Controller Methods
     @GetMapping("id/{id}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Feedback>> getById(@PathVariable Long id) {
         log.info("Request received to get feedback by id: {}::FeedbackController", id);
         try {
@@ -56,6 +58,7 @@ public class FeedbackController {
     }
 
     @GetMapping("ticketId/{ticketId}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<Feedback>> getByTicketId(@PathVariable Long ticketId) {
         log.info("Request received to get feedback by ticketId: {}::FeedbackController", ticketId);
         try {
@@ -70,6 +73,7 @@ public class FeedbackController {
     }
 
     @DeleteMapping("id/{id}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<Boolean>> delete(@PathVariable Long id) {
         log.info("Request received to delete feedback by id: {}::FeedbackController", id);
         try {
@@ -85,6 +89,7 @@ public class FeedbackController {
     }
 
     @PostMapping("/provide")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<String>> createFeedback(@Valid @RequestBody ProvideFeedbackRequest request) {
         log.info("Request received to provide feedback::FeedbackController");
         try {
@@ -108,6 +113,7 @@ public class FeedbackController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<String>> updateFeedback(@Valid @RequestBody UpdateFeedbackRequest request) {
         log.info("Request received to update feedback::FeedbackController");
         try {

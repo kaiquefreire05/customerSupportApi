@@ -10,6 +10,7 @@ import com.api.customersupport.usecases.client.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -47,6 +48,7 @@ public class ClientController {
 
     // Controller methods
     @GetMapping("/all")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<List<Client>>> getAll() {
         log.info("Request received to get all entities client::ClientController");
         try {
@@ -60,6 +62,7 @@ public class ClientController {
         }
     }
 
+    @PreAuthorize("hasRole('AGENT')")
     @GetMapping("/uuid/{uuid}")
     public ResponseEntity<BaseResponse<Client>> getById(@PathVariable UUID uuid) {
         log.info("Request received to get a entity by id client::ClientController");
@@ -82,6 +85,7 @@ public class ClientController {
     }
 
     @GetMapping("/email/{email}")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<Client>> getByEmail(@PathVariable String email) {
         log.info("Request received to get a entity by email client::ClientController");
         try {
@@ -104,6 +108,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{uuid}")
+    @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<Boolean>> deleteClient(@PathVariable UUID uuid) {
         log.info("Request received to delete an entity client::ClientController");
         try {
@@ -118,6 +123,7 @@ public class ClientController {
     }
 
     @PostMapping("/create")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<String>> createClient(@Valid @RequestBody CreateClientRequest request) {
         log.info("Request received to create client::ClientController");
         try {
@@ -137,6 +143,7 @@ public class ClientController {
     }
 
     @PutMapping("/update")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<BaseResponse<String>> updateClient(@Valid @RequestBody UpdateClientRequest request) {
         log.info("Request received to update client::ClientController");
         try {

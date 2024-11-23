@@ -9,6 +9,7 @@ import com.api.customersupport.usecases.agent.FindAgentByEmailUseCase;
 import com.api.customersupport.usecases.client.CreateClientUseCase;
 import com.api.customersupport.usecases.client.FindClientByEmailUseCase;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,7 +49,8 @@ public class AuthController {
                 String token = tokenService.generateToken(agent);
                 return ResponseEntity.ok(token);
             }
-        } catch (RuntimeException e) {
+
+        } catch (AgentNotFoundException e) {
 
             try {
                 var client = findClientByEmailUseCase.findClientByEmail(request.email());
@@ -60,7 +62,7 @@ public class AuthController {
                 return ResponseEntity.badRequest().body("Invalid email or password");
             }
 
-        } catch (JwtCreateException | AgentNotFoundException e) {
+        } catch (JwtCreateException e) {
             throw new RuntimeException(e);
 
         }
