@@ -1,4 +1,4 @@
 package com.api.customersupport.infrastructure.dto.response;
 
-public record LoginResponse(String name, String token) {
+public record LoginResponse(String name, String token, String role) {
 }
