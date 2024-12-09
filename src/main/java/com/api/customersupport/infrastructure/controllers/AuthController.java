@@ -3,6 +3,7 @@ package com.api.customersupport.infrastructure.controllers;
 import com.api.customersupport.domain.exceptions.*;
 import com.api.customersupport.infrastructure.dto.requests.auth.LoginRequest;
 import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
+import com.api.customersupport.infrastructure.dto.response.LoginResponse;
 import com.api.customersupport.infrastructure.mapper.ClientMapper;
 import com.api.customersupport.infrastructure.security.TokenService;
 import com.api.customersupport.usecases.agent.FindAgentByEmailUseCase;
@@ -11,13 +12,11 @@ import com.api.customersupport.usecases.client.FindClientByEmailUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/auth")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
     // Dependency Injection
     private final PasswordEncoder passwordEncoder;
@@ -47,7 +46,7 @@ public class AuthController {
             var agent = findAgentByEmailUseCase.findAgentByEmail(request.email());
             if (passwordEncoder.matches(request.password(), agent.getPassword())) {
                 String token = tokenService.generateToken(agent);
-                return ResponseEntity.ok(token);
+                return ResponseEntity.ok(new LoginResponse(agent.getName(), token, "AGENT"));
             }
 
         } catch (AgentNotFoundException e) {
@@ -56,7 +55,7 @@ public class AuthController {
                 var client = findClientByEmailUseCase.findClientByEmail(request.email());
                 if (passwordEncoder.matches(request.password(), client.getPassword())) {
                     String token = tokenService.generateToken(client);
-                    return ResponseEntity.ok(token);
+                    return ResponseEntity.ok(new LoginResponse(client.getName(), token, "CLIENT"));
                 }
             } catch (RuntimeException | JwtCreateException | ClientNotFoundException ex) {
                 return ResponseEntity.badRequest().body("Invalid email or password");

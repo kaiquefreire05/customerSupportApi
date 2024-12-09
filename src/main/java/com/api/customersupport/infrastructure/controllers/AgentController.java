@@ -21,6 +21,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @RestController
 @RequestMapping("api/v1/agent")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AgentController {
     // Dependency injection
     private final AgentEmailAvailableUseCase agentEmailAvailableUseCase;

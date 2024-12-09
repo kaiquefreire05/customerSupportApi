@@ -23,6 +23,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @RestController
 @RequestMapping("api/v1/ticket")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SupportTicketController {
 
     private final AssignAgentToTicketUseCase assignAgentToTicketUseCase;

@@ -18,6 +18,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @RestController
 @RequestMapping("api/v1/feedback")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FeedbackController {
     // Dependency Injection
     private final FindFeedbackByIdUseCase findFeedbackByIdUseCase;

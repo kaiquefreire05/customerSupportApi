@@ -21,6 +21,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @RestController
 @RequestMapping("api/v1/client")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClientController {
     // Dependency Injection
     private final CreateClientUseCase createClientUseCase;
