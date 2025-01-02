@@ -34,12 +34,17 @@ public class SupportTicketController {
     private final UpdateSupportTicketUseCase updateSupportTicketUseCase;
     private final FindClientByIdUseCase findClientByIdUseCase;
     private final DeleteSupportTicketUseCase deleteSupportTicketUseCase;
+    private final ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase;
 
-    public SupportTicketController(AssignAgentToTicketUseCase assignAgentToTicketUseCase
-            , CloseSupportTicketUseCase closeSupportTicketUseCase, CreateSupportTicketUseCase createSupportTicketUseCase
-            , FindTicketByIdUseCase findTicketByIdUseCase, ListSupportTicketsUseCase listSupportTicketsUseCase
-            , UpdateSupportTicketUseCase updateSupportTicketUseCase, FindClientByIdUseCase findClientByIdUseCase
-            , DeleteSupportTicketUseCase deleteSupportTicketUseCase) {
+    public SupportTicketController(AssignAgentToTicketUseCase assignAgentToTicketUseCase,
+                                   CloseSupportTicketUseCase closeSupportTicketUseCase,
+                                   CreateSupportTicketUseCase createSupportTicketUseCase,
+                                   FindTicketByIdUseCase findTicketByIdUseCase,
+                                   ListSupportTicketsUseCase listSupportTicketsUseCase,
+                                   UpdateSupportTicketUseCase updateSupportTicketUseCase,
+                                   FindClientByIdUseCase findClientByIdUseCase,
+                                   DeleteSupportTicketUseCase deleteSupportTicketUseCase,
+                                   ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase) {
         this.assignAgentToTicketUseCase = assignAgentToTicketUseCase;
         this.closeSupportTicketUseCase = closeSupportTicketUseCase;
         this.createSupportTicketUseCase = createSupportTicketUseCase;
@@ -48,7 +53,9 @@ public class SupportTicketController {
         this.updateSupportTicketUseCase = updateSupportTicketUseCase;
         this.findClientByIdUseCase = findClientByIdUseCase;
         this.deleteSupportTicketUseCase = deleteSupportTicketUseCase;
+        this.listOpenSupportTicketsUseCase = listOpenSupportTicketsUseCase;
     }
+
 
     // Controller Methods
     @GetMapping("/all")
@@ -64,6 +71,21 @@ public class SupportTicketController {
             log.error("Error occurred while trying to get all support tickets. Error details: {}::SupportTicketController", ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<List<SupportTicket>>builder().success(false)
                     .result(null).message("Error while trying to get all support tickets").build());
+        }
+    }
+
+    @GetMapping("/open")
+    @PreAuthorize("hasRole('AGENT')")
+    public ResponseEntity<BaseResponse<List<SupportTicket>>> getAllOpen() {
+        log.info("Request received to get all open support tickets::SupportTicketController");
+        try {
+            List<SupportTicket> openTickets = listOpenSupportTicketsUseCase.listOpenSupportTickets();
+            return ResponseEntity.ok().body(BaseResponse.<List<SupportTicket>>builder().success(true)
+                    .message("All open support tickets successfully returned.").result(openTickets).build());
+        } catch (Exception ex) {
+            log.error("Error occurred while trying to get all open support tickets. Error details: {}::SupportTicketController", ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<List<SupportTicket>>builder().success(false)
+                    .result(null).message("Error while trying to get all open support tickets").build());
         }
     }
 

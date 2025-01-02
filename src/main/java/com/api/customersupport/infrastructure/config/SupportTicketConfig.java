@@ -4,10 +4,7 @@ import com.api.customersupport.application.gateway.ticket.*;
 import com.api.customersupport.application.usecaseimpl.ticket.*;
 import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
 import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
-import com.api.customersupport.infrastructure.services.ticket.DeleteSupportTicketGatewayImpl;
-import com.api.customersupport.infrastructure.services.ticket.FindTicketByIdGatewayImpl;
-import com.api.customersupport.infrastructure.services.ticket.ListSupportTicketsGatewayImpl;
-import com.api.customersupport.infrastructure.services.ticket.UpdateSupportTicketGatewayImpl;
+import com.api.customersupport.infrastructure.services.ticket.*;
 import com.api.customersupport.usecases.agent.FindAgentByIdUseCase;
 import com.api.customersupport.usecases.ticket.*;
 import org.springframework.context.annotation.Bean;
@@ -74,4 +71,16 @@ public class SupportTicketConfig {
     public DeleteSupportTicketGateway deleteSupportTicketGateway(SupportTicketRepository supportTicketRepository) {
         return new DeleteSupportTicketGatewayImpl(supportTicketRepository);
     }
+
+    @Bean
+    public ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase(ListOpenSupportTicketsGateway listOpenSupportTicketsGateway) {
+        return new ListOpenSupportTicketsImpl(listOpenSupportTicketsGateway);
+    }
+
+    @Bean
+    public ListOpenSupportTicketsGateway listOpenSupportTicketsGateway(SupportTicketRepository supportTicketRepository,
+                                                                       SupportTicketMapper supportTicketMapper) {
+        return new ListOpenSupportTicketGatewayImpl(supportTicketRepository, supportTicketMapper);
+    }
+
 }
