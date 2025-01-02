@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @Service
-public class CreateClientGatewayImpl implements CreateClientGateway {
+public class CreateClientService implements CreateClientGateway {
     // Dependency Injection
     private final ClientMapper clientMapper;
     private final ClientEntityRepository clientRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public CreateClientGatewayImpl(ClientMapper clientMapper, ClientEntityRepository clientRepository
+    public CreateClientService(ClientMapper clientMapper, ClientEntityRepository clientRepository
             , PasswordEncoder passwordEncoder) {
         this.clientMapper = clientMapper;
         this.clientRepository = clientRepository;

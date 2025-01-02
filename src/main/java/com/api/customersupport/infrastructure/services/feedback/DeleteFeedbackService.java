@@ -5,12 +5,12 @@ import com.api.customersupport.infrastructure.repositories.FeedbackEntityReposit
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class DeleteFeedbackGatewayImpl implements DeleteFeedbackGateway {
+public class DeleteFeedbackService implements DeleteFeedbackGateway {
 
     //Dependency injection
     private final FeedbackEntityRepository feedbackEntityRepository;
 
-    public DeleteFeedbackGatewayImpl(FeedbackEntityRepository feedbackEntityRepository) {
+    public DeleteFeedbackService(FeedbackEntityRepository feedbackEntityRepository) {
         this.feedbackEntityRepository = feedbackEntityRepository;
     }
 

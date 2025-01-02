@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CloseSupportTicketGatewayImpl implements CloseSupportTicketGateway {
+public class CloseSupportTicketService implements CloseSupportTicketGateway {
     // Dependency Injection
     private final SupportTicketRepository ticketRepository;
     private final SupportTicketMapper ticketMapper;
 
-    public CloseSupportTicketGatewayImpl(SupportTicketRepository ticketRepository, SupportTicketMapper ticketMapper) {
+    public CloseSupportTicketService(SupportTicketRepository ticketRepository, SupportTicketMapper ticketMapper) {
         this.ticketRepository = ticketRepository;
         this.ticketMapper = ticketMapper;
     }

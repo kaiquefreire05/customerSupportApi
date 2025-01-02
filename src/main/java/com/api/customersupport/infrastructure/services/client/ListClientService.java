@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ListClientGatewayImpl implements ListClientGateway {
+public class ListClientService implements ListClientGateway {
     // Dependency Injection
     private final ClientEntityRepository clientEntityRepository;
     private final ClientMapper clientMapper;
 
-    public ListClientGatewayImpl(ClientEntityRepository clientEntityRepository, ClientMapper clientMapper) {
+    public ListClientService(ClientEntityRepository clientEntityRepository, ClientMapper clientMapper) {
         this.clientEntityRepository = clientEntityRepository;
         this.clientMapper = clientMapper;
     }

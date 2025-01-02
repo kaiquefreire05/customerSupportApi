@@ -8,12 +8,12 @@ import com.api.customersupport.infrastructure.repositories.AgentEntityRepository
 
 import java.util.List;
 
-public class ListAgentsGatewayImpl implements ListAgentsGateway {
+public class ListAgentsService implements ListAgentsGateway {
     // Dependency Injection
     private final AgentEntityRepository agentEntityRepository;
     private final AgentMapper agentMapper;
 
-    public ListAgentsGatewayImpl(AgentEntityRepository agentEntityRepository, AgentMapper agentMapper) {
+    public ListAgentsService(AgentEntityRepository agentEntityRepository, AgentMapper agentMapper) {
         this.agentEntityRepository = agentEntityRepository;
         this.agentMapper = agentMapper;
     }

@@ -21,7 +21,7 @@ public class SupportTicketConfig {
     @Bean
     public ListSupportTicketsGateway listSupportTicketsGateway(SupportTicketRepository supportTicketRepository
             , SupportTicketMapper supportTicketMapper) {
-        return new ListSupportTicketsGatewayImpl(supportTicketRepository, supportTicketMapper);
+        return new ListSupportTicketsService(supportTicketRepository, supportTicketMapper);
     }
 
     @Bean
@@ -32,7 +32,7 @@ public class SupportTicketConfig {
     @Bean
     public FindTicketByIdGateway findTicketByIdGateway(SupportTicketRepository supportTicketRepository
             , SupportTicketMapper supportTicketMapper) {
-        return new FindTicketByIdGatewayImpl(supportTicketRepository, supportTicketMapper);
+        return new FindTicketByIdService(supportTicketRepository, supportTicketMapper);
     }
 
     @Bean
@@ -48,7 +48,7 @@ public class SupportTicketConfig {
     @Bean
     public UpdateSupportTicketGateway updateSupportTicketGateway(SupportTicketRepository supportTicketRepository
             , SupportTicketMapper supportTicketMapper) {
-        return new UpdateSupportTicketGatewayImpl(supportTicketRepository, supportTicketMapper);
+        return new UpdateSupportTicketService(supportTicketRepository, supportTicketMapper);
     }
 
     @Bean
@@ -69,7 +69,7 @@ public class SupportTicketConfig {
 
     @Bean
     public DeleteSupportTicketGateway deleteSupportTicketGateway(SupportTicketRepository supportTicketRepository) {
-        return new DeleteSupportTicketGatewayImpl(supportTicketRepository);
+        return new DeleteSupportTicketService(supportTicketRepository);
     }
 
     @Bean
@@ -80,7 +80,6 @@ public class SupportTicketConfig {
     @Bean
     public ListOpenSupportTicketsGateway listOpenSupportTicketsGateway(SupportTicketRepository supportTicketRepository,
                                                                        SupportTicketMapper supportTicketMapper) {
-        return new ListOpenSupportTicketGatewayImpl(supportTicketRepository, supportTicketMapper);
+        return new ListOpenSupportTicketService(supportTicketRepository, supportTicketMapper);
     }
-
 }

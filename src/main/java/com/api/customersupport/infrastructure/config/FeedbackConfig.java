@@ -4,10 +4,10 @@ import com.api.customersupport.application.gateway.feedback.*;
 import com.api.customersupport.application.usecaseimpl.feedback.*;
 import com.api.customersupport.infrastructure.mapper.FeedbackMapper;
 import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
-import com.api.customersupport.infrastructure.services.feedback.DeleteFeedbackGatewayImpl;
-import com.api.customersupport.infrastructure.services.feedback.FindFeedbackByTicketIdGatewayImpl;
-import com.api.customersupport.infrastructure.services.feedback.ProvideFeedbackGatewayImpl;
-import com.api.customersupport.infrastructure.services.feedback.UpdateFeedbackGatewayImpl;
+import com.api.customersupport.infrastructure.services.feedback.DeleteFeedbackService;
+import com.api.customersupport.infrastructure.services.feedback.FindFeedbackByTicketIdService;
+import com.api.customersupport.infrastructure.services.feedback.ProvideFeedbackService;
+import com.api.customersupport.infrastructure.services.feedback.UpdateFeedbackService;
 import com.api.customersupport.usecases.feedback.*;
 import com.api.customersupport.usecases.ticket.FindTicketByIdUseCase;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ public class FeedbackConfig {
 
     @Bean
     public DeleteFeedbackGateway deleteFeedbackGateway(FeedbackEntityRepository feedbackEntityRepository) {
-        return new DeleteFeedbackGatewayImpl(feedbackEntityRepository);
+        return new DeleteFeedbackService(feedbackEntityRepository);
     }
 
     @Bean
@@ -39,7 +39,7 @@ public class FeedbackConfig {
     @Bean
     public FindFeedbackByTicketIdGateway findFeedbackByTicketIdGateway(FeedbackMapper feedbackMapper
             , FeedbackEntityRepository feedbackEntityRepository) {
-        return new FindFeedbackByTicketIdGatewayImpl(feedbackMapper, feedbackEntityRepository);
+        return new FindFeedbackByTicketIdService(feedbackMapper, feedbackEntityRepository);
     }
 
     @Bean
@@ -51,7 +51,7 @@ public class FeedbackConfig {
     @Bean
     public ProvideFeedbackGateway provideFeedbackGateway(FeedbackEntityRepository feedbackEntityRepository
             , FeedbackMapper feedbackMapper) {
-        return new ProvideFeedbackGatewayImpl(feedbackEntityRepository, feedbackMapper);
+        return new ProvideFeedbackService(feedbackEntityRepository, feedbackMapper);
     }
 
     @Bean
@@ -62,6 +62,6 @@ public class FeedbackConfig {
     @Bean
     public UpdateFeedbackGateway updateFeedbackGateway(FeedbackMapper feedbackMapper
             , FeedbackEntityRepository feedbackEntityRepository) {
-        return new UpdateFeedbackGatewayImpl(feedbackMapper, feedbackEntityRepository);
+        return new UpdateFeedbackService(feedbackMapper, feedbackEntityRepository);
     }
 }

@@ -9,11 +9,11 @@ import java.util.UUID;
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @Service
-public class DeleteClientGatewayImpl implements DeleteClientGateway {
+public class DeleteClientService implements DeleteClientGateway {
     // Dependency Injection
     private final ClientEntityRepository clientEntityRepository;
 
-    public DeleteClientGatewayImpl(ClientEntityRepository clientEntityRepository) {
+    public DeleteClientService(ClientEntityRepository clientEntityRepository) {
         this.clientEntityRepository = clientEntityRepository;
     }
 

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @Service
-public class CreateAgentGatewayImpl implements CreateAgentGateway {
+public class CreateAgentService implements CreateAgentGateway {
     // Dependency Injection
     private final AgentMapper agentMapper;
     private final AgentEntityRepository agentRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public CreateAgentGatewayImpl(AgentMapper agentMapper, AgentEntityRepository agentRepository
+    public CreateAgentService(AgentMapper agentMapper, AgentEntityRepository agentRepository
             , PasswordEncoder passwordEncoder) {
         this.agentMapper = agentMapper;
         this.agentRepository = agentRepository;

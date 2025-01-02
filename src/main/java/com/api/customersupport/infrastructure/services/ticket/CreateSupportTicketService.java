@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 @Service
-public class CreateSupportTicketGatewayImpl implements CreateSupportTicketGateway {
+public class CreateSupportTicketService implements CreateSupportTicketGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
     private final SupportTicketMapper supportTicketMapper;
 
-    public CreateSupportTicketGatewayImpl(SupportTicketRepository supportTicketRepository, SupportTicketMapper supportTicketMapper) {
+    public CreateSupportTicketService(SupportTicketRepository supportTicketRepository, SupportTicketMapper supportTicketMapper) {
         this.supportTicketRepository = supportTicketRepository;
         this.supportTicketMapper = supportTicketMapper;
     }

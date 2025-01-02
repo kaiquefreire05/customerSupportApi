@@ -5,11 +5,11 @@ import com.api.customersupport.infrastructure.repositories.AgentEntityRepository
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class AgentEmailAvailableGatewayImpl implements AgentEmailAvailableGateway {
+public class AgentEmailAvailableService implements AgentEmailAvailableGateway {
     // Dependency Injection
     private final AgentEntityRepository agentEntityRepository;
 
-    public AgentEmailAvailableGatewayImpl(AgentEntityRepository agentEntityRepository) {
+    public AgentEmailAvailableService(AgentEntityRepository agentEntityRepository) {
         this.agentEntityRepository = agentEntityRepository;
     }
 

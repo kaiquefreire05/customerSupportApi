@@ -9,12 +9,12 @@ import com.api.customersupport.infrastructure.repositories.SupportTicketReposito
 import org.springframework.stereotype.Service;
 
 @Service
-public class AssignAgentToTicketGatewayImpl implements AssignAgentToTicketGateway {
+public class AssignAgentToTicketService implements AssignAgentToTicketGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
     private final SupportTicketMapper supportTicketMapper;
 
-    public AssignAgentToTicketGatewayImpl(SupportTicketRepository supportTicketRepository, SupportTicketMapper supportTicketMapper) {
+    public AssignAgentToTicketService(SupportTicketRepository supportTicketRepository, SupportTicketMapper supportTicketMapper) {
         this.supportTicketRepository = supportTicketRepository;
         this.supportTicketMapper = supportTicketMapper;
     }

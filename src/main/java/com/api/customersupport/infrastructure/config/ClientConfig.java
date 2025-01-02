@@ -3,7 +3,7 @@ package com.api.customersupport.infrastructure.config;
 import com.api.customersupport.application.gateway.client.*;
 import com.api.customersupport.application.usecaseimpl.client.*;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
-import com.api.customersupport.infrastructure.services.client.ClientEmailAvailableGatewayImpl;
+import com.api.customersupport.infrastructure.services.client.ClientEmailAvailableService;
 import com.api.customersupport.usecases.client.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class ClientConfig {
 
     @Bean
     public ClientEmailAvailableGateway clientEmailAvailableGateway(ClientEntityRepository clientEntityRepository) {
-        return new ClientEmailAvailableGatewayImpl(clientEntityRepository);
+        return new ClientEmailAvailableService(clientEntityRepository);
     }
 
     @Bean

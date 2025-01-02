@@ -6,9 +6,9 @@ import com.api.customersupport.application.usecaseimpl.agent.*;
 import com.api.customersupport.application.usecaseimpl.client.ClientEmailAvailableImpl;
 import com.api.customersupport.infrastructure.mapper.AgentMapper;
 import com.api.customersupport.infrastructure.repositories.AgentEntityRepository;
-import com.api.customersupport.infrastructure.services.agent.AgentEmailAvailableGatewayImpl;
-import com.api.customersupport.infrastructure.services.agent.DeleteAgentGatewayImpl;
-import com.api.customersupport.infrastructure.services.agent.ListAgentsGatewayImpl;
+import com.api.customersupport.infrastructure.services.agent.AgentEmailAvailableService;
+import com.api.customersupport.infrastructure.services.agent.DeleteAgentService;
+import com.api.customersupport.infrastructure.services.agent.ListAgentsService;
 import com.api.customersupport.usecases.agent.*;
 import com.api.customersupport.usecases.client.ClientEmailAvailableUseCase;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ public class AgentConfig {
 
     @Bean
     public AgentEmailAvailableGateway agentEmailAvailableGateway(AgentEntityRepository agentEntityRepository) {
-        return new AgentEmailAvailableGatewayImpl(agentEntityRepository);
+        return new AgentEmailAvailableService(agentEntityRepository);
     }
 
     @Bean
@@ -49,7 +49,7 @@ public class AgentConfig {
 
     @Bean
     public ListAgentsGateway listAgentsGateway(AgentEntityRepository agentEntityRepository, AgentMapper agentMapper) {
-        return new ListAgentsGatewayImpl(agentEntityRepository, agentMapper);
+        return new ListAgentsService(agentEntityRepository, agentMapper);
     }
 
     @Bean
@@ -59,7 +59,7 @@ public class AgentConfig {
 
     @Bean
     public DeleteAgentGateway deleteAgentGateway(AgentEntityRepository agentEntityRepository) {
-        return new DeleteAgentGatewayImpl(agentEntityRepository);
+        return new DeleteAgentService(agentEntityRepository);
     }
 
     @Bean

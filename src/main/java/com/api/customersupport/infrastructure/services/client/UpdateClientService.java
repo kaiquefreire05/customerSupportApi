@@ -9,13 +9,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UpdateClientGatewayImpl implements UpdateClientGateway {
+public class UpdateClientService implements UpdateClientGateway {
     // Dependency Injection
     private final ClientEntityRepository clientEntityRepository;
     private final ClientMapper clientMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UpdateClientGatewayImpl(ClientEntityRepository clientEntityRepository, ClientMapper clientMapper
+    public UpdateClientService(ClientEntityRepository clientEntityRepository, ClientMapper clientMapper
             , PasswordEncoder passwordEncoder) {
         this.clientEntityRepository = clientEntityRepository;
         this.clientMapper = clientMapper;

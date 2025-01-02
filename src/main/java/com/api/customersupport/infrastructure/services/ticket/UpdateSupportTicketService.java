@@ -6,12 +6,12 @@ import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
 import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
 
-public class UpdateSupportTicketGatewayImpl implements UpdateSupportTicketGateway {
+public class UpdateSupportTicketService implements UpdateSupportTicketGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
     private final SupportTicketMapper supportTicketMapper;
 
-    public UpdateSupportTicketGatewayImpl(SupportTicketRepository supportTicketRepository
+    public UpdateSupportTicketService(SupportTicketRepository supportTicketRepository
             , SupportTicketMapper supportTicketMapper) {
         this.supportTicketRepository = supportTicketRepository;
         this.supportTicketMapper = supportTicketMapper;

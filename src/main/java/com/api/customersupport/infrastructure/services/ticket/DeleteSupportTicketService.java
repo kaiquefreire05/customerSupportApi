@@ -5,11 +5,11 @@ import com.api.customersupport.infrastructure.repositories.SupportTicketReposito
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class DeleteSupportTicketGatewayImpl implements DeleteSupportTicketGateway {
+public class DeleteSupportTicketService implements DeleteSupportTicketGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
 
-    public DeleteSupportTicketGatewayImpl(SupportTicketRepository supportTicketRepository) {
+    public DeleteSupportTicketService(SupportTicketRepository supportTicketRepository) {
         this.supportTicketRepository = supportTicketRepository;
     }
 

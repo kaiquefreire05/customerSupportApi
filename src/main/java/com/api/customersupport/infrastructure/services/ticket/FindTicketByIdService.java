@@ -9,12 +9,12 @@ import com.api.customersupport.infrastructure.repositories.SupportTicketReposito
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class FindTicketByIdGatewayImpl implements FindTicketByIdGateway {
+public class FindTicketByIdService implements FindTicketByIdGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
     private final SupportTicketMapper supportTicketMapper;
 
-    public FindTicketByIdGatewayImpl(SupportTicketRepository supportTicketRepository
+    public FindTicketByIdService(SupportTicketRepository supportTicketRepository
             , SupportTicketMapper supportTicketMapper) {
         this.supportTicketRepository = supportTicketRepository;
         this.supportTicketMapper = supportTicketMapper;

@@ -6,13 +6,13 @@ import com.api.customersupport.infrastructure.entities.FeedbackEntity;
 import com.api.customersupport.infrastructure.mapper.FeedbackMapper;
 import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
 
-public class UpdateFeedbackGatewayImpl implements UpdateFeedbackGateway {
+public class UpdateFeedbackService implements UpdateFeedbackGateway {
 
     //Dependency injection
     private final FeedbackMapper feedbackMapper;
     private final FeedbackEntityRepository feedbackEntityRepository;
 
-    public UpdateFeedbackGatewayImpl(FeedbackMapper feedbackMapper, FeedbackEntityRepository feedbackEntityRepository) {
+    public UpdateFeedbackService(FeedbackMapper feedbackMapper, FeedbackEntityRepository feedbackEntityRepository) {
         this.feedbackMapper = feedbackMapper;
         this.feedbackEntityRepository = feedbackEntityRepository;
     }

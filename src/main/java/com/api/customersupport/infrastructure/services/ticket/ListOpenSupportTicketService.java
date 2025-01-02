@@ -1,6 +1,7 @@
 package com.api.customersupport.infrastructure.services.ticket;
 
-import com.api.customersupport.application.gateway.ticket.ListSupportTicketsGateway;
+import com.api.customersupport.application.gateway.ticket.ListOpenSupportTicketsGateway;
+import com.api.customersupport.domain.enums.StatusEnum;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
@@ -8,20 +9,20 @@ import com.api.customersupport.infrastructure.repositories.SupportTicketReposito
 
 import java.util.List;
 
-public class ListSupportTicketsGatewayImpl implements ListSupportTicketsGateway {
+public class ListOpenSupportTicketService implements ListOpenSupportTicketsGateway {
     // Dependency Injection
     private final SupportTicketRepository supportTicketRepository;
     private final SupportTicketMapper supportTicketMapper;
 
-    public ListSupportTicketsGatewayImpl(SupportTicketRepository supportTicketRepository
-            , SupportTicketMapper supportTicketMapper) {
+    public ListOpenSupportTicketService(SupportTicketRepository supportTicketRepository,
+                                        SupportTicketMapper supportTicketMapper) {
         this.supportTicketRepository = supportTicketRepository;
         this.supportTicketMapper = supportTicketMapper;
     }
 
     @Override
-    public List<SupportTicket> listSupportTickets() {
-        List<SupportTicketEntity> supportTicketEntityList = supportTicketRepository.findAll();
-        return supportTicketMapper.toDomainModelList(supportTicketEntityList);
+    public List<SupportTicket> listOpenSupportTickets() {
+        List<SupportTicketEntity> openSupportTicketEntity = supportTicketRepository.findByStatus(StatusEnum.OPEN);
+        return supportTicketMapper.toDomainModelList(openSupportTicketEntity);
     }
 }

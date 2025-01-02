@@ -7,12 +7,12 @@ import com.api.customersupport.infrastructure.repositories.FeedbackEntityReposit
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class ProvideFeedbackGatewayImpl implements ProvideFeedbackGateway {
+public class ProvideFeedbackService implements ProvideFeedbackGateway {
     // Dependency Injection
     private final FeedbackEntityRepository feedbackEntityRepository;
     private final FeedbackMapper feedbackMapper;
 
-    public ProvideFeedbackGatewayImpl(FeedbackEntityRepository feedbackEntityRepository
+    public ProvideFeedbackService(FeedbackEntityRepository feedbackEntityRepository
             , FeedbackMapper feedbackMapper) {
         this.feedbackEntityRepository = feedbackEntityRepository;
         this.feedbackMapper = feedbackMapper;

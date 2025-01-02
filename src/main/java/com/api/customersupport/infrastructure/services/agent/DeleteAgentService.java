@@ -7,11 +7,11 @@ import java.util.UUID;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
-public class DeleteAgentGatewayImpl implements DeleteAgentGateway {
+public class DeleteAgentService implements DeleteAgentGateway {
     // Dependency Injection
     private final AgentEntityRepository agentEntityRepository;
 
-    public DeleteAgentGatewayImpl(AgentEntityRepository agentEntityRepository) {
+    public DeleteAgentService(AgentEntityRepository agentEntityRepository) {
         this.agentEntityRepository = agentEntityRepository;
     }
 
