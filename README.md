@@ -1,4 +1,5 @@
 # Customer Support API
+![Status](https://img.shields.io/badge/status-developing-yellow)
 
 ## Description
 
