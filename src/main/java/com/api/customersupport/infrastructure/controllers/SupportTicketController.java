@@ -35,6 +35,8 @@ public class SupportTicketController {
     private final FindClientByIdUseCase findClientByIdUseCase;
     private final DeleteSupportTicketUseCase deleteSupportTicketUseCase;
     private final ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase;
+    private final GetTicketsByAgentIdUseCase getTicketsByAgentIdUseCase;
+    private final ListOpenTicketsWithoutAgentUseCase listOpenTicketsWithoutAgentUseCase;
 
     public SupportTicketController(AssignAgentToTicketUseCase assignAgentToTicketUseCase,
                                    CloseSupportTicketUseCase closeSupportTicketUseCase,
@@ -44,7 +46,9 @@ public class SupportTicketController {
                                    UpdateSupportTicketUseCase updateSupportTicketUseCase,
                                    FindClientByIdUseCase findClientByIdUseCase,
                                    DeleteSupportTicketUseCase deleteSupportTicketUseCase,
-                                   ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase) {
+                                   ListOpenSupportTicketsUseCase listOpenSupportTicketsUseCase,
+                                   GetTicketsByAgentIdUseCase getTicketsByAgentIdUseCase,
+                                   ListOpenTicketsWithoutAgentUseCase listOpenTicketsWithoutAgentUseCase) {
         this.assignAgentToTicketUseCase = assignAgentToTicketUseCase;
         this.closeSupportTicketUseCase = closeSupportTicketUseCase;
         this.createSupportTicketUseCase = createSupportTicketUseCase;
@@ -54,6 +58,8 @@ public class SupportTicketController {
         this.findClientByIdUseCase = findClientByIdUseCase;
         this.deleteSupportTicketUseCase = deleteSupportTicketUseCase;
         this.listOpenSupportTicketsUseCase = listOpenSupportTicketsUseCase;
+        this.getTicketsByAgentIdUseCase = getTicketsByAgentIdUseCase;
+        this.listOpenTicketsWithoutAgentUseCase = listOpenTicketsWithoutAgentUseCase;
     }
 
 
@@ -89,12 +95,27 @@ public class SupportTicketController {
         }
     }
 
+    @GetMapping("/open_without_agent")
+    @PreAuthorize("hasRole('AGENT')")
+    public ResponseEntity<BaseResponse<List<SupportTicket>>> getAllOpenWithoutAgent() {
+        log.info("Request received to get all open tickets without agent::SupportTicketController");
+        try {
+            List<SupportTicket> openTicketsWithoutAgent = listOpenTicketsWithoutAgentUseCase.listOpenTicketsWithoutAgent();
+            return ResponseEntity.ok().body(BaseResponse.<List<SupportTicket>>builder().success(true).result(openTicketsWithoutAgent)
+                    .message("All open tickets without agent successfully returned").build());
+        } catch (Exception ex) {
+            log.error("Error occurred while trying to get all open tickets without agent. Error details: {}::SupportTicketController", ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<List<SupportTicket>>builder()
+                    .success(false).result(null).message("Error while trying to get all open tickets without agent").build());
+        }
+    }
+
     @GetMapping("id/{id}")
     @PreAuthorize("hasRole('AGENT')")
     public ResponseEntity<BaseResponse<SupportTicket>> getById(@PathVariable Long id) {
-        log.info("Request received to get a entity by id:AgentController");
+        log.info("Request received to get a entity by id::AgentController");
         try {
-            log.info("Starting to get a entity by id:AgentController");
+            log.info("Starting to get a entity by id::AgentController");
             SupportTicket supportTicket = findTicketByIdUseCase.findTicketById(id);
             return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.<SupportTicket>builder().success(true)
                     .result(supportTicket).message("Support Ticket with id " + id + " successfully returned").build());
@@ -107,6 +128,23 @@ public class SupportTicketController {
             log.error("Error occurred while trying to get support ticket by id. Error details: {}::SupportTicket", ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<SupportTicket>builder().success(false)
                     .result(null).message("Error while trying to get support ticket by id").build());
+        }
+    }
+
+    @GetMapping("/agent/{assignedAgentId}")
+    @PreAuthorize("hasRole('AGENT')")
+    public ResponseEntity<BaseResponse<List<SupportTicket>>> getTicketsByAgentId (@PathVariable UUID assignedAgentId) {
+        log.info("Request received to get all tickets by agent::SupportTicketController");
+        try {
+            log.info("'Starting to get all tickets by agent::SupportTicketController");
+            List<SupportTicket> supportTickets = getTicketsByAgentIdUseCase.getTicketsByAgentId(assignedAgentId);
+            return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.<List<SupportTicket>>builder().success(true)
+                    .result(supportTickets).message("All tickets by agent successfully returned").build());
+        } catch (Exception ex) {
+            log.error("Error occurred while trying to get all tickets by agent. Error details: {}::SupportTicketController",
+                    ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<List<SupportTicket>>builder().success(false)
+                    .result(null).message("Error while trying to get all tickets by agent").build());
         }
     }
 
