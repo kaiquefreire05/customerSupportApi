@@ -41,6 +41,11 @@ public class SupportTicketConfig {
     }
 
     @Bean
+    public GetTicketsByAgentIdUseCase getTicketsByAgentIdUseCase(GetTicketsByAgentIdGateway getTicketByAgentIdGateway) {
+        return new GetTicketsByAgentIdImpl(getTicketByAgentIdGateway);
+    }
+
+    @Bean
     public UpdateSupportTicketUseCase updateSupportTicketUseCase(UpdateSupportTicketGateway updateSupportTicketGateway) {
         return new UpdateSupportTicketImpl(updateSupportTicketGateway);
     }
@@ -65,6 +70,23 @@ public class SupportTicketConfig {
     @Bean
     public DeleteSupportTicketUseCase deleteSupportTicketUseCase(DeleteSupportTicketGateway deleteSupportTicketGateway) {
         return new DeleteSupportTicketImpl(deleteSupportTicketGateway);
+    }
+
+    @Bean
+    public GetTicketsByAgentIdGateway getTicketsByAgentIdGateway(SupportTicketRepository ticketRepository,
+                                                                 SupportTicketMapper ticketMapper) {
+        return new GetTicketsByAgentIdService(ticketRepository, ticketMapper);
+    }
+
+    @Bean
+    public ListOpenTicketsWithoutAgentUseCase listOpenTicketsWithoutAgentUseCase(ListOpenTicketsWithoutAgentGateway listOpenTicketsWithoutAgentGateway) {
+        return new ListOpenTicketsWithoutAgentImpl(listOpenTicketsWithoutAgentGateway);
+    }
+
+    @Bean
+    public ListOpenTicketsWithoutAgentGateway listOpenTicketsWithoutAgentGateway(SupportTicketRepository supportTicketRepository,
+                                              SupportTicketMapper supportTicketMapper) {
+        return new ListOpenTicketsWithoutAgentService(supportTicketRepository, supportTicketMapper);
     }
 
     @Bean
