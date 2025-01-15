@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.mapper;
+package com.api.customersupport.application.mapper;
 
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.EmailInvalidException;
@@ -25,6 +25,14 @@ public class AgentMapper {
     }
 
     // Methods
+    public void updateValues(Agent agent, Agent existentUser) throws EmailInvalidException,
+            PhoneInvalidException {
+        existentUser.setName(agent.getName());
+        existentUser.setEmail(agent.getEmail());
+        existentUser.setPhone(agent.getPhone());
+        existentUser.setPassword(agent.getPassword());
+    }
+
     public Agent toDomainModel(AgentEntity agentEntity) {
         try {
             return new Agent(
@@ -84,4 +92,5 @@ public class AgentMapper {
         return agentEntities.stream().map(this::toDomainModel)
                 .collect(Collectors.toList());
     }
+
 }

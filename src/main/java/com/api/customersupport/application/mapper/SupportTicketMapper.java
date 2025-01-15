@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.mapper;
+package com.api.customersupport.application.mapper;
 
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
@@ -22,6 +22,15 @@ public class SupportTicketMapper {
     }
 
     // Methods
+    public void updateValues(SupportTicket supportTicket, SupportTicket existentTicket) {
+        existentTicket.setTitle(supportTicket.getTitle());
+        existentTicket.setDescription(supportTicket.getDescription());
+        existentTicket.setStatus(supportTicket.getStatus());
+        existentTicket.setCategory(supportTicket.getCategory());
+        existentTicket.setClosedAt(supportTicket.getClosedAt());
+        existentTicket.setCreatedAt(supportTicket.getCreatedAt());
+    }
+
     public SupportTicket toDomainModel(SupportTicketEntity supportTicketEntity) {
         return new SupportTicket(
                 supportTicketEntity.getId(),
@@ -97,5 +106,4 @@ public class SupportTicketMapper {
                 supportTicket.getFeedback() != null ? feedbackMapper.toEntity(supportTicket.getFeedback()) : null
         );
     }
-
 }

@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.mapper;
+package com.api.customersupport.application.mapper;
 
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.MappingException;
@@ -20,6 +20,11 @@ public class FeedbackMapper {
     }
 
     // Methods
+    public void updateValues(Feedback feedback, Feedback existentFeedback) throws RatingInvalidException {
+        existentFeedback.setComments(feedback.getComments());
+        existentFeedback.setRating(feedback.getRating());
+    }
+
     public Feedback toDomainModel(FeedbackEntity feedbackEntity) {
         try {
             return new Feedback(

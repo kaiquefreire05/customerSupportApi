@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.mapper;
+package com.api.customersupport.application.mapper;
 
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.EmailInvalidException;
@@ -41,6 +41,14 @@ public class ClientMapper {
             throw new MappingException(ErrorCodeEnum.MP0001.getCode(),
                     ErrorCodeEnum.concatError(ex.getMessage(), ErrorCodeEnum.MP0001));
         }
+    }
+
+    public void updateValues(Client client, Client existentClient) throws EmailInvalidException, PhoneInvalidException {
+        existentClient.setName(client.getName());
+        existentClient.setEmail(client.getEmail());
+        existentClient.setPassword(client.getPassword());
+        existentClient.setPhone(client.getPhone());
+        existentClient.setAddress(client.getAddress());
     }
 
     public Client toDomainCreateRequest(CreateClientRequest request)
@@ -88,4 +96,6 @@ public class ClientMapper {
                 .map(this::toDomainModel)
                 .collect(Collectors.toList());
     }
+
+
 }
