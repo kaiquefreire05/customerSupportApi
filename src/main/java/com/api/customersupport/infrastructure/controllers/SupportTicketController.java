@@ -1,5 +1,6 @@
 package com.api.customersupport.infrastructure.controllers;
 
+import com.api.customersupport.application.ports.input.ticket.*;
 import com.api.customersupport.domain.enums.StatusEnum;
 import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.domain.models.Client;
@@ -7,8 +8,7 @@ import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.dto.requests.ticket.CreateTicketRequest;
 import com.api.customersupport.infrastructure.dto.requests.ticket.UpdateTicketRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
-import com.api.customersupport.usecases.client.FindClientByIdUseCase;
-import com.api.customersupport.usecases.ticket.*;
+import com.api.customersupport.application.ports.input.clients.FindClientByIdUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

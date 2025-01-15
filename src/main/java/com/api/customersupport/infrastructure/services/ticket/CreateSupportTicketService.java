@@ -2,7 +2,7 @@ package com.api.customersupport.infrastructure.services.ticket;
 
 import com.api.customersupport.application.gateway.ticket.CreateSupportTicketGateway;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
+import com.api.customersupport.application.mapper.SupportTicketMapper;
 import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
 import org.springframework.stereotype.Service;
 

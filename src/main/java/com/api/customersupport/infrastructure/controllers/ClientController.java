@@ -1,12 +1,12 @@
 package com.api.customersupport.infrastructure.controllers;
 
+import com.api.customersupport.application.ports.input.clients.*;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
 import com.api.customersupport.infrastructure.dto.requests.client.UpdateClientRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
-import com.api.customersupport.infrastructure.mapper.ClientMapper;
-import com.api.customersupport.usecases.client.*;
+import com.api.customersupport.application.mapper.ClientMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

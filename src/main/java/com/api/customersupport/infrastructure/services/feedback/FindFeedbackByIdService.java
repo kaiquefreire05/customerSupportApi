@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.feedback.FindFeedbackByIdGate
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.FeedbackNotFoundException;
 import com.api.customersupport.domain.models.Feedback;
-import com.api.customersupport.infrastructure.mapper.FeedbackMapper;
+import com.api.customersupport.application.mapper.FeedbackMapper;
 import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
 import org.springframework.stereotype.Service;
 

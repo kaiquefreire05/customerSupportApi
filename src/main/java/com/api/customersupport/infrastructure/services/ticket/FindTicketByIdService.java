@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.ticket.FindTicketByIdGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
+import com.api.customersupport.application.mapper.SupportTicketMapper;
 import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;

@@ -1,11 +1,11 @@
 package com.api.customersupport.infrastructure.controllers;
 
+import com.api.customersupport.application.ports.input.feedback.*;
 import com.api.customersupport.domain.exceptions.FeedbackNotFoundException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.infrastructure.dto.requests.feedback.ProvideFeedbackRequest;
 import com.api.customersupport.infrastructure.dto.requests.feedback.UpdateFeedbackRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
-import com.api.customersupport.usecases.feedback.*;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

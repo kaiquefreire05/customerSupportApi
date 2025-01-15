@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.ticket.AssignAgentToTicketGat
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
-import com.api.customersupport.infrastructure.mapper.SupportTicketMapper;
+import com.api.customersupport.application.mapper.SupportTicketMapper;
 import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
 import org.springframework.stereotype.Service;
 

@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.client.FindClientByIdGateway;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.infrastructure.mapper.ClientMapper;
+import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
 import org.springframework.stereotype.Service;
 

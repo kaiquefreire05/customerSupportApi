@@ -2,7 +2,7 @@ package com.api.customersupport.infrastructure.services.client;
 
 import com.api.customersupport.application.gateway.client.CreateClientGateway;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.infrastructure.mapper.ClientMapper;
+import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

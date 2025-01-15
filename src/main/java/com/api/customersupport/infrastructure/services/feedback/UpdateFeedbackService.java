@@ -3,7 +3,7 @@ package com.api.customersupport.infrastructure.services.feedback;
 import com.api.customersupport.application.gateway.feedback.UpdateFeedbackGateway;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
-import com.api.customersupport.infrastructure.mapper.FeedbackMapper;
+import com.api.customersupport.application.mapper.FeedbackMapper;
 import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
 
 public class UpdateFeedbackService implements UpdateFeedbackGateway {
