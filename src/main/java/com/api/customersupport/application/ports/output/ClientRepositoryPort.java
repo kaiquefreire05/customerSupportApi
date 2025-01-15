@@ -1,0 +1,15 @@
+package com.api.customersupport.application.ports.output;
+
+import com.api.customersupport.domain.models.Client;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface ClientRepositoryPort {
+    Client createClient(Client client);
+    Boolean deleteClient(UUID clientId);
+    Client findClientByEmail(String email);
+    Client getClientById(UUID id);
+    List<Client> listClients();
+    Client updateClient(Client client);
+}
