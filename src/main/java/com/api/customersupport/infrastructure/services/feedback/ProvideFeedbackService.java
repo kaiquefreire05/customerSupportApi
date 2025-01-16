@@ -3,7 +3,7 @@ package com.api.customersupport.infrastructure.services.feedback;
 import com.api.customersupport.application.gateway.feedback.ProvideFeedbackGateway;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.application.mapper.FeedbackMapper;
-import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
+import com.api.customersupport.infrastructure.jpa.FeedbackEntityRepository;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 

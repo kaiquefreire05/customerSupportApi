@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.ticket.CloseSupportTicketGate
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import com.api.customersupport.application.mapper.SupportTicketMapper;
-import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
+import com.api.customersupport.infrastructure.jpa.SupportTicketRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

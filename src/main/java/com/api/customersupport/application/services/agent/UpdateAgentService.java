@@ -1,6 +1,5 @@
 package com.api.customersupport.application.services.agent;
 
-import com.api.customersupport.application.gateway.agent.UpdateAgentGateway;
 import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
 import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;

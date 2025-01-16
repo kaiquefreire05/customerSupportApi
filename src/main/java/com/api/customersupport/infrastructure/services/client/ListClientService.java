@@ -4,7 +4,7 @@ import com.api.customersupport.application.gateway.client.ListClientGateway;
 import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.infrastructure.entities.ClientEntity;
 import com.api.customersupport.application.mapper.ClientMapper;
-import com.api.customersupport.infrastructure.repositories.ClientEntityRepository;
+import com.api.customersupport.infrastructure.jpa.ClientEntityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

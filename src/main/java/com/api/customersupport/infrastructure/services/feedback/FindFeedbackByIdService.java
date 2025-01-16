@@ -5,7 +5,7 @@ import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.FeedbackNotFoundException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.application.mapper.FeedbackMapper;
-import com.api.customersupport.infrastructure.repositories.FeedbackEntityRepository;
+import com.api.customersupport.infrastructure.jpa.FeedbackEntityRepository;
 import org.springframework.stereotype.Service;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;

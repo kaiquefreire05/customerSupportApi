@@ -5,7 +5,7 @@ import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.application.mapper.AgentMapper;
-import com.api.customersupport.infrastructure.repositories.AgentEntityRepository;
+import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 import org.springframework.stereotype.Service;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;

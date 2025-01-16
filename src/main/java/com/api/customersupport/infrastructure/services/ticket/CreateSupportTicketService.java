@@ -3,7 +3,7 @@ package com.api.customersupport.infrastructure.services.ticket;
 import com.api.customersupport.application.gateway.ticket.CreateSupportTicketGateway;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.application.mapper.SupportTicketMapper;
-import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
+import com.api.customersupport.infrastructure.jpa.SupportTicketRepository;
 import org.springframework.stereotype.Service;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;

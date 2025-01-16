@@ -1,7 +1,7 @@
 package com.api.customersupport.infrastructure.services.ticket;
 
 import com.api.customersupport.application.gateway.ticket.DeleteSupportTicketGateway;
-import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
+import com.api.customersupport.infrastructure.jpa.SupportTicketRepository;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 

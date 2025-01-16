@@ -1,7 +1,7 @@
 package com.api.customersupport.infrastructure.services.agent;
 
 import com.api.customersupport.application.gateway.agent.DeleteAgentGateway;
-import com.api.customersupport.infrastructure.repositories.AgentEntityRepository;
+import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 
 import java.util.UUID;
 

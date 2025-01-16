@@ -1,7 +1,6 @@
-package com.api.customersupport.infrastructure.repositories;
+package com.api.customersupport.infrastructure.jpa;
 
 import com.api.customersupport.domain.enums.StatusEnum;
-import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

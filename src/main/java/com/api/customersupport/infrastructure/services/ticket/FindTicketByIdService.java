@@ -5,7 +5,7 @@ import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.application.mapper.SupportTicketMapper;
-import com.api.customersupport.infrastructure.repositories.SupportTicketRepository;
+import com.api.customersupport.infrastructure.jpa.SupportTicketRepository;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 

@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.repositories;
+package com.api.customersupport.infrastructure.jpa;
 
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -3,7 +3,7 @@ package com.api.customersupport.infrastructure.services.agent;
 import com.api.customersupport.application.gateway.agent.CreateAgentGateway;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.application.mapper.AgentMapper;
-import com.api.customersupport.infrastructure.repositories.AgentEntityRepository;
+import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
