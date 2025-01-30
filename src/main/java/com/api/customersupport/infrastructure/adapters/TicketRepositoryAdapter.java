@@ -10,7 +10,7 @@ import com.api.customersupport.domain.models.SupportTicket;
 import com.api.customersupport.infrastructure.entities.AgentEntity;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
-import com.api.customersupport.infrastructure.jpa.SupportTicketRepository;
+import com.api.customersupport.infrastructure.jpa.SupportTicketEntityRepository;
 import org.flywaydb.core.api.ErrorCode;
 
 import java.time.LocalDateTime;
@@ -22,11 +22,11 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 
 public class TicketRepositoryAdapter implements TicketRepositoryPort {
     // Dependency Injection
-    private final SupportTicketRepository ticketRepository;
+    private final SupportTicketEntityRepository ticketRepository;
     private final AgentEntityRepository agentRepository;
     private final SupportTicketMapper ticketMapper;
 
-    public TicketRepositoryAdapter(SupportTicketRepository ticketRepository, AgentEntityRepository agentRepository,
+    public TicketRepositoryAdapter(SupportTicketEntityRepository ticketRepository, AgentEntityRepository agentRepository,
                                    SupportTicketMapper ticketMapper) {
         this.ticketRepository = ticketRepository;
         this.agentRepository = agentRepository;

@@ -1,6 +1,5 @@
 package com.api.customersupport.application.services.agent;
 
-import com.api.customersupport.application.gateway.agent.CreateAgentGateway;
 import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
