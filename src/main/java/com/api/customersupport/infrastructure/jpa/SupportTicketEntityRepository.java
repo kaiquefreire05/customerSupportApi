@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.UUID;
 
-public interface SupportTicketRepository extends JpaRepository<SupportTicketEntity, Long> {
+public interface SupportTicketEntityRepository extends JpaRepository<SupportTicketEntity, Long> {
     List<SupportTicketEntity> findByStatus(StatusEnum status);
     List<SupportTicketEntity> getTicketsByAssignedAgentId(UUID assignedAgentId);
     @Query("SELECT t FROM SupportTicketEntity t WHERE t.status = 'OPEN' AND t.assignedAgent IS NULL")
