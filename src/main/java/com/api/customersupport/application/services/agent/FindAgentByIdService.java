@@ -1,10 +1,9 @@
 package com.api.customersupport.application.services.agent;
 
-import com.api.customersupport.application.gateway.agent.FindAgentByIdGateway;
+import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
 
 import java.util.UUID;
 

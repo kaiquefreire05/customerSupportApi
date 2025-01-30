@@ -1,9 +1,8 @@
 package com.api.customersupport.application.services.ticket;
 
-import com.api.customersupport.application.gateway.ticket.GetTicketsByAgentIdGateway;
+import com.api.customersupport.application.ports.input.ticket.GetTicketsByAgentIdUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.application.ports.input.ticket.GetTicketsByAgentIdUseCase;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,13 +1,12 @@
 package com.api.customersupport.application.services.feedback;
 
-import com.api.customersupport.application.gateway.feedback.UpdateFeedbackGateway;
 import com.api.customersupport.application.mapper.FeedbackMapper;
 import com.api.customersupport.application.ports.input.feedback.FindFeedbackByIdUseCase;
+import com.api.customersupport.application.ports.input.feedback.UpdateFeedbackUseCase;
 import com.api.customersupport.application.ports.output.FeedbackRepositoryPort;
 import com.api.customersupport.domain.exceptions.FeedbackNotFoundException;
 import com.api.customersupport.domain.exceptions.RatingInvalidException;
 import com.api.customersupport.domain.models.Feedback;
-import com.api.customersupport.application.ports.input.feedback.UpdateFeedbackUseCase;
 
 import java.time.LocalDateTime;
 

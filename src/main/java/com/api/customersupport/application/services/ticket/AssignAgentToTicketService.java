@@ -1,12 +1,11 @@
 package com.api.customersupport.application.services.ticket;
 
-import com.api.customersupport.application.gateway.ticket.AssignAgentToTicketGateway;
-import com.api.customersupport.application.ports.output.TicketRepositoryPort;
-import com.api.customersupport.domain.exceptions.AgentNotFoundException;
-import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
 import com.api.customersupport.application.ports.input.ticket.AssignAgentToTicketUseCase;
 import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
+import com.api.customersupport.application.ports.output.TicketRepositoryPort;
+import com.api.customersupport.domain.exceptions.AgentNotFoundException;
+import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 
 import java.util.UUID;
 

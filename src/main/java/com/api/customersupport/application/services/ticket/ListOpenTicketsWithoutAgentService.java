@@ -1,9 +1,8 @@
 package com.api.customersupport.application.services.ticket;
 
-import com.api.customersupport.application.gateway.ticket.ListOpenTicketsWithoutAgentGateway;
+import com.api.customersupport.application.ports.input.ticket.ListOpenTicketsWithoutAgentUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.application.ports.input.ticket.ListOpenTicketsWithoutAgentUseCase;
 
 import java.util.List;
 

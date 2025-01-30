@@ -1,10 +1,9 @@
 package com.api.customersupport.application.services.agent;
 
-import com.api.customersupport.application.gateway.agent.FindAgentByEmailGateway;
+import com.api.customersupport.application.ports.input.agent.FindAgentByEmailUseCase;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.application.ports.input.agent.FindAgentByEmailUseCase;
 
 public class FindAgentByEmailService implements FindAgentByEmailUseCase {
     // Dependency Injection

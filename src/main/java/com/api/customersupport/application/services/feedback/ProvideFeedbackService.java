@@ -1,13 +1,12 @@
 package com.api.customersupport.application.services.feedback;
 
-import com.api.customersupport.application.gateway.feedback.ProvideFeedbackGateway;
+import com.api.customersupport.application.ports.input.feedback.ProvideFeedbackUseCase;
+import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
 import com.api.customersupport.application.ports.output.FeedbackRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.FeedbackNotCreatedException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.application.ports.input.feedback.ProvideFeedbackUseCase;
-import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 

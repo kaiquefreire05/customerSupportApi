@@ -1,11 +1,11 @@
 package com.api.customersupport.infrastructure.security;
 
 import com.api.customersupport.application.gateway.agent.FindAgentByEmailGateway;
+import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

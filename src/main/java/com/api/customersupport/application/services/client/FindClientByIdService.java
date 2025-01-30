@@ -1,10 +1,9 @@
 package com.api.customersupport.application.services.client;
 
-import com.api.customersupport.application.gateway.client.FindClientByIdGateway;
+import com.api.customersupport.application.ports.input.clients.FindClientByIdUseCase;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.FindClientByIdUseCase;
 
 import java.util.UUID;
 

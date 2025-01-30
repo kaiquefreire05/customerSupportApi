@@ -2,6 +2,7 @@ package com.api.customersupport.application.services.client;
 
 import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.application.ports.input.clients.FindClientByIdUseCase;
+import com.api.customersupport.application.ports.input.clients.UpdateClientUseCase;
 import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
@@ -10,7 +11,6 @@ import com.api.customersupport.domain.exceptions.EmailInvalidException;
 import com.api.customersupport.domain.exceptions.EmailUnavailableException;
 import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.UpdateClientUseCase;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

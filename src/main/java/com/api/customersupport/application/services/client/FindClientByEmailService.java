@@ -1,9 +1,8 @@
 package com.api.customersupport.application.services.client;
 
-import com.api.customersupport.application.gateway.client.FindClientByEmailGateway;
+import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 
 public class FindClientByEmailService implements FindClientByEmailUseCase {
     // Dependency Injection

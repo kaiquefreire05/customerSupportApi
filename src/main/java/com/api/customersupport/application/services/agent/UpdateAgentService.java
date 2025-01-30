@@ -2,6 +2,7 @@ package com.api.customersupport.application.services.agent;
 
 import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
+import com.api.customersupport.application.ports.input.agent.UpdateAgentUseCase;
 import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
@@ -10,7 +11,6 @@ import com.api.customersupport.domain.exceptions.EmailInvalidException;
 import com.api.customersupport.domain.exceptions.EmailUnavailableException;
 import com.api.customersupport.domain.exceptions.PhoneInvalidException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.application.ports.input.agent.UpdateAgentUseCase;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

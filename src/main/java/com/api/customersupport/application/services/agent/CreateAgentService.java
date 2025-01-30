@@ -1,11 +1,11 @@
 package com.api.customersupport.application.services.agent;
 
+import com.api.customersupport.application.ports.input.agent.CreateAgentUseCase;
 import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.EmailUnavailableException;
 import com.api.customersupport.domain.models.Agent;
-import com.api.customersupport.application.ports.input.agent.CreateAgentUseCase;
 
 public class CreateAgentService implements CreateAgentUseCase {
     // Dependency Injection

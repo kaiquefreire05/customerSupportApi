@@ -1,12 +1,11 @@
 package com.api.customersupport.application.services.client;
 
-import com.api.customersupport.application.gateway.client.CreateClientGateway;
+import com.api.customersupport.application.ports.input.clients.CreateClientUseCase;
 import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.EmailUnavailableException;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.CreateClientUseCase;
 
 public class CreateClientService implements CreateClientUseCase {
     // Dependency Injection

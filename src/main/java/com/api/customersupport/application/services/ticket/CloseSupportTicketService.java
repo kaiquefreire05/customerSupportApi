@@ -1,9 +1,9 @@
 package com.api.customersupport.application.services.ticket;
 
+import com.api.customersupport.application.ports.input.ticket.CloseSupportTicketUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.InternalServerErrorException;
-import com.api.customersupport.application.ports.input.ticket.CloseSupportTicketUseCase;
 
 public class CloseSupportTicketService implements CloseSupportTicketUseCase {
     // Dependency Injection

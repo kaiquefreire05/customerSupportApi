@@ -1,9 +1,8 @@
 package com.api.customersupport.application.services.client;
 
-import com.api.customersupport.application.gateway.client.ListClientGateway;
+import com.api.customersupport.application.ports.input.clients.ListClientsUseCase;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.models.Client;
-import com.api.customersupport.application.ports.input.clients.ListClientsUseCase;
 
 import java.util.List;
 

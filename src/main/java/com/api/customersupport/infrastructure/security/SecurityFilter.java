@@ -1,8 +1,8 @@
 package com.api.customersupport.infrastructure.security;
 
-import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.application.ports.input.agent.FindAgentByEmailUseCase;
 import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
+import com.api.customersupport.domain.models.Client;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

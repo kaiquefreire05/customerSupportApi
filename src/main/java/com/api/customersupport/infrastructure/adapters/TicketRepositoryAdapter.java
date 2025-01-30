@@ -11,11 +11,9 @@ import com.api.customersupport.infrastructure.entities.AgentEntity;
 import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 import com.api.customersupport.infrastructure.jpa.SupportTicketEntityRepository;
-import org.flywaydb.core.api.ErrorCode;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;

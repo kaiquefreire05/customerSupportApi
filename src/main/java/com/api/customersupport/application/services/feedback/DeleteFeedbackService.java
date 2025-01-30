@@ -1,10 +1,9 @@
 package com.api.customersupport.application.services.feedback;
 
-import com.api.customersupport.application.gateway.feedback.DeleteFeedbackGateway;
+import com.api.customersupport.application.ports.input.feedback.DeleteFeebackUseCase;
 import com.api.customersupport.application.ports.output.FeedbackRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.InternalServerErrorException;
-import com.api.customersupport.application.ports.input.feedback.DeleteFeebackUseCase;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 

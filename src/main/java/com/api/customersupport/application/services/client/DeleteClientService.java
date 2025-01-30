@@ -1,10 +1,9 @@
 package com.api.customersupport.application.services.client;
 
-import com.api.customersupport.application.gateway.client.DeleteClientGateway;
+import com.api.customersupport.application.ports.input.clients.DeleteClientUseCase;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.InternalServerErrorException;
-import com.api.customersupport.application.ports.input.clients.DeleteClientUseCase;
 
 import java.util.UUID;
 

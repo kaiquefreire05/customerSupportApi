@@ -1,8 +1,8 @@
 package com.api.customersupport.application.services.ticket;
 
+import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
 
 public class FindTicketByIdService implements FindTicketByIdUseCase {
     // Dependency Injection

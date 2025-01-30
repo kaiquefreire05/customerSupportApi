@@ -1,12 +1,12 @@
 package com.api.customersupport.infrastructure.controllers;
 
+import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.*;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.infrastructure.dto.requests.agent.CreateAgentRequest;
 import com.api.customersupport.infrastructure.dto.requests.agent.UpdateAgentRequest;
 import com.api.customersupport.infrastructure.dto.response.BaseResponse;
-import com.api.customersupport.application.mapper.AgentMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

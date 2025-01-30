@@ -1,11 +1,10 @@
 package com.api.customersupport.application.services.ticket;
 
-import com.api.customersupport.application.gateway.ticket.UpdateSupportTicketGateway;
 import com.api.customersupport.application.mapper.SupportTicketMapper;
 import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
+import com.api.customersupport.application.ports.input.ticket.UpdateSupportTicketUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
 import com.api.customersupport.domain.models.SupportTicket;
-import com.api.customersupport.application.ports.input.ticket.UpdateSupportTicketUseCase;
 
 import java.time.LocalDateTime;
 

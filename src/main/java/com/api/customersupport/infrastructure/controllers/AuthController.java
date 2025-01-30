@@ -1,14 +1,14 @@
 package com.api.customersupport.infrastructure.controllers;
 
+import com.api.customersupport.application.mapper.ClientMapper;
+import com.api.customersupport.application.ports.input.agent.FindAgentByEmailUseCase;
+import com.api.customersupport.application.ports.input.clients.CreateClientUseCase;
+import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import com.api.customersupport.domain.exceptions.*;
 import com.api.customersupport.infrastructure.dto.requests.auth.LoginRequest;
 import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
 import com.api.customersupport.infrastructure.dto.response.LoginResponse;
-import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.infrastructure.security.TokenService;
-import com.api.customersupport.application.ports.input.agent.FindAgentByEmailUseCase;
-import com.api.customersupport.application.ports.input.clients.CreateClientUseCase;
-import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
