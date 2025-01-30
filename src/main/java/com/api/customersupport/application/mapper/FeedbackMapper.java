@@ -10,6 +10,9 @@ import com.api.customersupport.infrastructure.entities.SupportTicketEntity;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class FeedbackMapper {
     // Dependency Injection
@@ -63,4 +66,9 @@ public class FeedbackMapper {
         );
     }
 
+    public List<Feedback> toDomainModelList(List<FeedbackEntity> feedbackEntities) {
+        return feedbackEntities.stream()
+                .map(this::toDomainModel)
+                .collect(Collectors.toList());
+    }
 }
