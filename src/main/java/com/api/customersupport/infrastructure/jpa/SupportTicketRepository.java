@@ -13,4 +13,6 @@ public interface SupportTicketRepository extends JpaRepository<SupportTicketEnti
     List<SupportTicketEntity> getTicketsByAssignedAgentId(UUID assignedAgentId);
     @Query("SELECT t FROM SupportTicketEntity t WHERE t.status = 'OPEN' AND t.assignedAgent IS NULL")
     List<SupportTicketEntity> listOpenTicketsWithoutAgent();
+    @Query("SELECT t FROM SupportTicketEntity t WHERE t.status = 'OPEN'")
+    List<SupportTicketEntity> listOpen();
 }
