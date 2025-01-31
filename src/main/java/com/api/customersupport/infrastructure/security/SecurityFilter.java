@@ -7,6 +7,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,8 +26,8 @@ public class SecurityFilter extends OncePerRequestFilter {
     private final FindClientByEmailUseCase findClientByEmailUseCase;
     private final FindAgentByEmailUseCase findAgentByEmailUseCase;
 
-    public SecurityFilter(TokenService tokenService, FindClientByEmailUseCase findClientByEmailUseCase
-            , FindAgentByEmailUseCase findAgentByEmailUseCase) {
+    public SecurityFilter(TokenService tokenService, @Lazy FindClientByEmailUseCase findClientByEmailUseCase
+            , @Lazy FindAgentByEmailUseCase findAgentByEmailUseCase) {
         this.tokenService = tokenService;
         this.findClientByEmailUseCase = findClientByEmailUseCase;
         this.findAgentByEmailUseCase = findAgentByEmailUseCase;
