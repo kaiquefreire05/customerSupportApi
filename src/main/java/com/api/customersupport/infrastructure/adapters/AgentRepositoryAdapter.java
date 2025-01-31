@@ -8,6 +8,7 @@ import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.infrastructure.entities.AgentEntity;
 import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
+@Repository
 public class AgentRepositoryAdapter implements AgentRepositoryPort {
     // Dependency Injection
     private final AgentEntityRepository repository;

@@ -25,7 +25,7 @@ public class CreateAgentService implements CreateAgentUseCase {
 
     // Helper Methods
     public void checkEmailAvailability(String email) throws EmailUnavailableException {
-        if (!agentEmailAvailabilityPort.isEmailAvailable(email)) {
+        if (!agentEmailAvailabilityPort.isAgentEmailAvailable(email)) {
            throw new EmailUnavailableException(ErrorCodeEnum.ON0007.getCode(), ErrorCodeEnum.ON0007.getMessage());
         }
     }

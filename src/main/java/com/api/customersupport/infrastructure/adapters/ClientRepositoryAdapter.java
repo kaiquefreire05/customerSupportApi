@@ -8,12 +8,14 @@ import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.infrastructure.entities.ClientEntity;
 import com.api.customersupport.infrastructure.jpa.ClientEntityRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
+@Repository
 public class ClientRepositoryAdapter implements ClientRepositoryPort {
     // Dependency Injection
     private final ClientEntityRepository repository;

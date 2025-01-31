@@ -2,6 +2,7 @@ package com.api.customersupport.application.services.client;
 
 import com.api.customersupport.application.ports.input.clients.FindClientByEmailUseCase;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
+import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
 
 public class FindClientByEmailService implements FindClientByEmailUseCase {
@@ -13,7 +14,7 @@ public class FindClientByEmailService implements FindClientByEmailUseCase {
     }
 
     @Override
-    public Client findClientByEmail(String email) {
+    public Client findClientByEmail(String email) throws ClientNotFoundException {
         return repository.findClientByEmail(email);
     }
 }

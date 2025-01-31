@@ -7,12 +7,14 @@ import com.api.customersupport.domain.exceptions.FeedbackNotFoundException;
 import com.api.customersupport.domain.models.Feedback;
 import com.api.customersupport.infrastructure.entities.FeedbackEntity;
 import com.api.customersupport.infrastructure.jpa.FeedbackEntityRepository;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.api.customersupport.infrastructure.utils.Utils.log;
 
+@Repository
 public class FeedbackRepositoryAdapter implements FeedbackRepositoryPort {
     // Dependency Injection
     private final FeedbackEntityRepository feedbackRepository;

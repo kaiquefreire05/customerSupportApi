@@ -2,6 +2,7 @@ package com.api.customersupport.application.services.ticket;
 
 import com.api.customersupport.application.ports.input.ticket.FindTicketByIdUseCase;
 import com.api.customersupport.application.ports.output.TicketRepositoryPort;
+import com.api.customersupport.domain.exceptions.TicketSupportNotFoundException;
 import com.api.customersupport.domain.models.SupportTicket;
 
 public class FindTicketByIdService implements FindTicketByIdUseCase {
@@ -13,7 +14,7 @@ public class FindTicketByIdService implements FindTicketByIdUseCase {
     }
 
     @Override
-    public SupportTicket findTicketById(Long ticketId) {
+    public SupportTicket findTicketById(Long ticketId) throws TicketSupportNotFoundException {
         return ticketRepositoryPort.getTicketById(ticketId);
     }
 }

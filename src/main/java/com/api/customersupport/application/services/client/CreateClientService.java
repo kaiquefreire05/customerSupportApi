@@ -26,7 +26,7 @@ public class CreateClientService implements CreateClientUseCase {
 
     // Helper Methods
     public void checkEmailAvailability(String email) throws EmailUnavailableException {
-        if (!clientEmailAvailabilityPort.isEmailAvailable(email)) {
+        if (!clientEmailAvailabilityPort.isClientEmailAvailable(email)) {
            throw new EmailUnavailableException(ErrorCodeEnum.ON0007.getCode(), ErrorCodeEnum.ON0007.getMessage());
         }
     }
