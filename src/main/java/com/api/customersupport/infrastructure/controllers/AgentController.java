@@ -2,6 +2,7 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.*;
+import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.infrastructure.dto.requests.agent.CreateAgentRequest;
@@ -24,7 +25,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 @CrossOrigin(origins = "http://localhost:3000")
 public class AgentController {
     // Dependency injection
-    private final AgentEmailAvailableUseCase agentEmailAvailableUseCase;
+    private final AgentEmailAvailabilityPort agentEmailAvailabilityPort;
     private final FindAgentByEmailUseCase findAgentByEmailUseCase;
     private final FindAgentByIdUseCase findAgentById;
     private final ListAgentsUseCase listAgentsUseCase;
@@ -33,11 +34,12 @@ public class AgentController {
     private final UpdateAgentUseCase updateAgentUseCase;
     private final AgentMapper agentMapper;
 
-    public AgentController(AgentEmailAvailableUseCase agentEmailAvailableUseCase
-            , FindAgentByEmailUseCase findAgentByEmailUseCase, FindAgentByIdUseCase findAgentById
-            , ListAgentsUseCase listAgentsUseCase, DeleteAgentUseCase deleteAgentUseCase
-            , CreateAgentUseCase createAgentUseCase, UpdateAgentUseCase updateAgentUseCase, AgentMapper agentMapper) {
-        this.agentEmailAvailableUseCase = agentEmailAvailableUseCase;
+    public AgentController(AgentEmailAvailabilityPort agentEmailAvailabilityPort,
+                           FindAgentByEmailUseCase findAgentByEmailUseCase, FindAgentByIdUseCase findAgentById,
+                           ListAgentsUseCase listAgentsUseCase, DeleteAgentUseCase deleteAgentUseCase,
+                           CreateAgentUseCase createAgentUseCase, UpdateAgentUseCase updateAgentUseCase,
+                           AgentMapper agentMapper) {
+        this.agentEmailAvailabilityPort = agentEmailAvailabilityPort;
         this.findAgentByEmailUseCase = findAgentByEmailUseCase;
         this.findAgentById = findAgentById;
         this.listAgentsUseCase = listAgentsUseCase;
@@ -46,6 +48,7 @@ public class AgentController {
         this.updateAgentUseCase = updateAgentUseCase;
         this.agentMapper = agentMapper;
     }
+
 
     // Controllers methods
     @GetMapping("/all")
@@ -127,7 +130,7 @@ public class AgentController {
         log.info("Request received to create a entity agent::AgentController");
         try {
             log.info("Checking if email is available::AgentController");
-            agentEmailAvailableUseCase.isEmailAvailable(request.email());
+            agentEmailAvailabilityPort.isAgentEmailAvailable(request.email());
             log.info("Email is available::AgentController");
             createAgentUseCase.createAgent(agentMapper.toDomainCreateRequest(request));
             log.info("Agent created successfully::AgentController");

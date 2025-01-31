@@ -2,6 +2,7 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.application.ports.input.clients.*;
+import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;
@@ -25,7 +26,7 @@ import static com.api.customersupport.infrastructure.utils.Utils.log;
 public class ClientController {
     // Dependency Injection
     private final CreateClientUseCase createClientUseCase;
-    private final ClientEmailAvailableUseCase clientEmailAvailableUseCase;
+    private final ClientEmailAvailabilityPort clientEmailAvailabilityPort;
     private final ClientMapper clientMapper;
     private final FindClientByIdUseCase findClientByIdUseCase;
     private final ListClientsUseCase listClientsUseCase;
@@ -33,11 +34,12 @@ public class ClientController {
     private final DeleteClientUseCase deleteClientUseCase;
     private final FindClientByEmailUseCase findClientByEmailUseCase;
 
-    public ClientController(CreateClientUseCase createClientUseCase, ClientEmailAvailableUseCase clientEmailAvailableUseCase
-            , ClientMapper clientMapper, FindClientByIdUseCase findClientByIdUseCase, ListClientsUseCase listClientsUseCase
-            , UpdateClientUseCase updateClientUseCase, DeleteClientUseCase deleteClientUseCase, FindClientByEmailUseCase findClientByEmailUseCase) {
+    public ClientController(CreateClientUseCase createClientUseCase, ClientEmailAvailabilityPort clientEmailAvailabilityPort,
+                            ClientMapper clientMapper, FindClientByIdUseCase findClientByIdUseCase,
+                            ListClientsUseCase listClientsUseCase, UpdateClientUseCase updateClientUseCase,
+                            DeleteClientUseCase deleteClientUseCase, FindClientByEmailUseCase findClientByEmailUseCase) {
         this.createClientUseCase = createClientUseCase;
-        this.clientEmailAvailableUseCase = clientEmailAvailableUseCase;
+        this.clientEmailAvailabilityPort = clientEmailAvailabilityPort;
         this.clientMapper = clientMapper;
         this.findClientByIdUseCase = findClientByIdUseCase;
         this.listClientsUseCase = listClientsUseCase;
@@ -45,7 +47,6 @@ public class ClientController {
         this.deleteClientUseCase = deleteClientUseCase;
         this.findClientByEmailUseCase = findClientByEmailUseCase;
     }
-
 
     // Controller methods
     @GetMapping("/all")
@@ -129,7 +130,7 @@ public class ClientController {
         log.info("Request received to create client::ClientController");
         try {
             log.info("Checking if email is available::ClientController");
-            clientEmailAvailableUseCase.isEmailAvailable(request.email()); // Check if email is available
+            clientEmailAvailabilityPort.isClientEmailAvailable(request.email()); // Check if email is available
             log.info("Email is available::ClientController");
             createClientUseCase.createClient(clientMapper.toDomainCreateRequest(request)); // Create client
             log.info("Client created successfully::ClientController");

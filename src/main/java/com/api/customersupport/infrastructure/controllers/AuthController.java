@@ -70,7 +70,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody CreateClientRequest request)
-            throws EmailInvalidException, PhoneInvalidException, InternalServerErrorException, JwtCreateException {
+            throws EmailInvalidException, PhoneInvalidException, InternalServerErrorException, JwtCreateException, EmailUnavailableException {
         try {
 
             var existingClient = findClientByEmailUseCase.findClientByEmail(request.email());

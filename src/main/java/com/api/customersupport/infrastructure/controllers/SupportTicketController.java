@@ -119,11 +119,6 @@ public class SupportTicketController {
             SupportTicket supportTicket = findTicketByIdUseCase.findTicketById(id);
             return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.<SupportTicket>builder().success(true)
                     .result(supportTicket).message("Support Ticket with id " + id + " successfully returned").build());
-        } catch (TicketSupportNotFoundException ex) {
-            log.error("Support Ticket with id {} not found::SupportTicketController", id);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(BaseResponse.<SupportTicket>builder().success(false)
-                    .result(null).message("Support Ticket with id " + id + " not found").build());
-
         } catch (Exception ex) {
             log.error("Error occurred while trying to get support ticket by id. Error details: {}::SupportTicket", ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(BaseResponse.<SupportTicket>builder().success(false)
