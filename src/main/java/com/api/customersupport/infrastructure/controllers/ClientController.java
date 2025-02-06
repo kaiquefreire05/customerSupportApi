@@ -2,7 +2,7 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.application.mapper.ClientMapper;
 import com.api.customersupport.application.ports.input.clients.*;
-import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.ClientEmailAvailabilityPort;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.models.Client;
 import com.api.customersupport.infrastructure.dto.requests.client.CreateClientRequest;

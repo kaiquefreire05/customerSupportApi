@@ -1,7 +1,7 @@
 package com.api.customersupport.application.services.client;
 
 import com.api.customersupport.application.ports.input.clients.CreateClientUseCase;
-import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.ClientEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.ClientRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.EmailUnavailableException;

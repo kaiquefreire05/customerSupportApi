@@ -1,4 +1,4 @@
-package com.api.customersupport.infrastructure.jpa;
+package com.api.customersupport.infrastructure.jpa.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

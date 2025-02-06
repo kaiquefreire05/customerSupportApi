@@ -2,7 +2,7 @@ package com.api.customersupport.infrastructure.controllers;
 
 import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.*;
-import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.AgentEmailAvailabilityPort;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
 import com.api.customersupport.domain.models.Agent;
 import com.api.customersupport.infrastructure.dto.requests.agent.CreateAgentRequest;

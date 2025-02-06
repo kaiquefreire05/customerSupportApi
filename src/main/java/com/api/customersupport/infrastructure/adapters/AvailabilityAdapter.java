@@ -1,7 +1,7 @@
 package com.api.customersupport.infrastructure.adapters;
 
-import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
-import com.api.customersupport.application.ports.output.ClientEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.AgentEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.ClientEmailAvailabilityPort;
 import com.api.customersupport.infrastructure.jpa.AgentEntityRepository;
 import com.api.customersupport.infrastructure.jpa.ClientEntityRepository;
 import org.springframework.stereotype.Component;

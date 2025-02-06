@@ -6,6 +6,8 @@ import com.api.customersupport.application.ports.input.agent.*;
 import com.api.customersupport.application.ports.input.clients.*;
 import com.api.customersupport.application.ports.input.feedback.FindFeedbackByIdUseCase;
 import com.api.customersupport.application.ports.output.*;
+import com.api.customersupport.application.ports.output.availability.AgentEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.ClientEmailAvailabilityPort;
 import com.api.customersupport.application.services.agent.*;
 import com.api.customersupport.application.services.client.*;
 import com.api.customersupport.application.services.feedback.FindFeedbackByIdService;

@@ -3,7 +3,7 @@ package com.api.customersupport.application.services.agent;
 import com.api.customersupport.application.mapper.AgentMapper;
 import com.api.customersupport.application.ports.input.agent.FindAgentByIdUseCase;
 import com.api.customersupport.application.ports.input.agent.UpdateAgentUseCase;
-import com.api.customersupport.application.ports.output.AgentEmailAvailabilityPort;
+import com.api.customersupport.application.ports.output.availability.AgentEmailAvailabilityPort;
 import com.api.customersupport.application.ports.output.AgentRepositoryPort;
 import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.AgentNotFoundException;
