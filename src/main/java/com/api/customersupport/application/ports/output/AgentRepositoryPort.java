@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface AgentRepositoryPort {
     Agent saveAgent(Agent agent);
-    Agent updateAgent(Agent agent);
+    Agent updateAgent(Agent agent) throws AgentNotFoundException;
     Agent getAgentById(UUID id) throws AgentNotFoundException;
     Agent getAgentByEmail(String email) throws AgentNotFoundException;
     List<Agent> listAgents();

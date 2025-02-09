@@ -45,20 +45,25 @@ public class AgentRepositoryAdapter implements AgentRepositoryPort {
     }
 
     @Override
-    public Agent updateAgent(Agent agent) {
+    public Agent updateAgent(Agent agent) throws AgentNotFoundException {
         try {
             log.info("Starting of agent update with id: {}::AgentRepositoryAdapter", agent.getId());
+
             var existentAgent = repository.findById(agent.getId())
                     .orElseThrow(() -> new AgentNotFoundException(ErrorCodeEnum.ON0006.getCode(),
                             ErrorCodeEnum.ON0006.getMessage()));
+
             var updatedAgent = mapper.toEntityUpdate(agent);
             updatedAgent.setPassword(encoder.encode(agent.getPassword()));
             updatedAgent.setUpdatedAt(LocalDateTime.now());
 
             var savedAgent = repository.save(updatedAgent);
             log.info("End of agent update with id: {}::AgentRepositoryAdapter", agent.getId());
-            return mapper.toDomainModel(savedAgent);
 
+            return mapper.toDomainModel(savedAgent);
+        } catch (AgentNotFoundException ex) {
+            // Relança para que os testes possam capturar
+            throw ex;
         } catch (Exception ex) {
             log.error("Error in agent update. Error details: {}::AgentRepositoryAdapter", ex.getMessage());
             return null;
