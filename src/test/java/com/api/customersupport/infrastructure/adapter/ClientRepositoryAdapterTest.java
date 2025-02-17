@@ -1,6 +1,7 @@
 package com.api.customersupport.infrastructure.adapter;
 
 import com.api.customersupport.application.mapper.ClientMapper;
+import com.api.customersupport.domain.enums.ErrorCodeEnum;
 import com.api.customersupport.domain.exceptions.ClientNotFoundException;
 import com.api.customersupport.domain.exceptions.EmailInvalidException;
 import com.api.customersupport.domain.exceptions.PhoneInvalidException;
@@ -67,7 +68,7 @@ public class ClientRepositoryAdapterTest {
     void testUpdateClientSuccess() throws ClientNotFoundException {
         when(repository.findById(clientId)).thenReturn(Optional.of(clientEntity));
         when(mapper.toEntityUpdate(client)).thenReturn(clientEntity);
-        when(clientEntity.getPassword()).thenReturn("encodedPassword");
+        when(passwordEncoder.encode(clientEntity.getPassword())).thenReturn("encodedPassword");
         when(repository.save(clientEntity)).thenReturn(clientEntity);
         when(mapper.toDomainModel(clientEntity)).thenReturn(client);
 
@@ -77,5 +78,69 @@ public class ClientRepositoryAdapterTest {
         assertNotNull(updatedClient);
         assertEquals(client.getEmail(), updatedClient.getEmail());
         verify(repository, times(1)).save(clientEntity);
+    }
+
+    @Test
+    void testUpdateClientNotFound() {
+        when(repository.findById(clientId)).thenReturn(Optional.empty());
+
+        ClientNotFoundException thrown = assertThrows(ClientNotFoundException.class,
+                () -> clientRepositoryAdapter.updateClient(client));
+
+        assertEquals(ErrorCodeEnum.ON0005.getMessage(), thrown.getCode());
+        verify(repository, never()).save(any());
+    }
+
+    @Test
+    void testFindClientByIdSuccess() throws ClientNotFoundException {
+        when(repository.findById(clientId)).thenReturn(Optional.of(clientEntity));
+        when(mapper.toDomainModel(clientEntity)).thenReturn(client);
+
+        Client foundClient = clientRepositoryAdapter.getClientById(clientId);
+
+        assertNotNull(foundClient);
+        assertEquals(client.getEmail(), foundClient.getEmail());
+        verify(repository, times(1)).findById(clientId);
+
+    }
+
+    @Test
+    void testFindClientByIdNotFound() {
+        when(repository.findById(clientId)).thenReturn(Optional.empty());
+        assertThrows(ClientNotFoundException.class, () -> clientRepositoryAdapter.getClientById(clientId));
+        verify(repository, times(1)).findById(clientId);
+    }
+
+    @Test
+    void testFindClientByEmailSuccess() throws ClientNotFoundException {
+        when(repository.findByEmail(client.getEmail())).thenReturn(Optional.of(clientEntity));
+        when(mapper.toDomainModel(clientEntity)).thenReturn(client);
+
+        Client foundClient = clientRepositoryAdapter.findClientByEmail(client.getEmail());
+
+        assertNotNull(foundClient);
+        assertEquals(client.getEmail(), foundClient.getEmail());
+        verify(repository, times(1)).findByEmail(client.getEmail());
+    }
+
+    @Test
+    void testFindClientByEmailNotFound() {
+        when(repository.findByEmail(client.getEmail())).thenReturn(Optional.empty());
+        assertThrows(ClientNotFoundException.class, () -> clientRepositoryAdapter.findClientByEmail(client.getEmail()));
+        verify(repository, times(1)).findByEmail(client.getEmail());
+    }
+
+    @Test
+    void testDeleteClientSuccess() {
+        doNothing().when(repository).deleteById(clientId);
+        assertTrue(clientRepositoryAdapter.deleteClient(clientId));
+        verify(repository, times(1)).deleteById(clientId);
+    }
+
+    @Test
+    void testDeleteClientFailure() {
+        doThrow(IllegalArgumentException.class).when(repository).deleteById(clientId);
+        assertFalse(clientRepositoryAdapter.deleteClient(clientId));
+        verify(repository, times(1)).deleteById(clientId);
     }
 }
